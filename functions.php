@@ -7,14 +7,14 @@
 
 namespace MutualAidNYC;
 
-add_action( 'init', __NAMESPACE__ . '\\init' );
+add_action( 'after_setup_theme', __NAMESPACE__ . '\\setup' );
 
 /**
  * Initialization of theme.
  *
  * @return void
  */
-function init() : void {
+function setup() : void {
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_styles' );
 }
 
