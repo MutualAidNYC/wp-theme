@@ -7,7 +7,7 @@
 
 namespace MutualAidNYC;
 
-add_action( 'after_setup_theme', __NAMESPACE__ . '\\setup' );
+add_action( 'after_setup_theme', __NAMESPACE__ . '\\setup', 11 );
 
 /**
  * Initialization of theme.
@@ -15,14 +15,68 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\\setup' );
  * @return void
  */
 function setup() : void {
-	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_styles' );
+	remove_action( 'wp_enqueue_scripts', 'twentytwenty_register_styles' );
+	remove_action( 'enqueue_block_editor_assets', 'twentytwenty_block_editor_styles', 1 );
+	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_styles', 10 );
+	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\block_editor_styles' );
+
+	add_filter( 'twentytwenty_get_elements_array', '__return_empty_array' );
+
+	$editor_color_palette = [
+		[
+			'slug'  => 'primary',
+			'name'  => __( 'Primary', 'mutualaidnyc' ),
+			'color' => '#000000',
+		],
+		[
+			'slug'  => 'secondary',
+			'name'  => __( 'Secondary', 'mutualaidnyc' ),
+			'color' => '#c24532',
+		],
+		[
+			'slug'  => 'dark',
+			'name'  => __( 'Dark Accent', 'mutualaidnyc' ),
+			'color' => '#47133d',
+		],
+		[
+			'slug'  => 'dark-alt',
+			'name'  => __( 'Alternative Dark Accent', 'mutualaidnyc' ),
+			'color' => '#204045',
+		],
+		[
+			'slug'  => 'accent-background',
+			'name'  => __( 'Accent Background', 'mutualaidnyc' ),
+			'color' => '#f7cf56',
+		],
+		[
+			'slug'  => 'light-background',
+			'name'  => __( 'Light Background', 'mutualaidnyc' ),
+			'color' => '#a4cacb',
+		],
+	];
+	add_theme_support( 'editor-color-palette', $editor_color_palette );
 }
 
 /**
- * Enqueues the parent theme styles.
+ * Enqueues the theme styles.
  *
  * @return void
  */
 function enqueue_styles() : void {
-	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
+
+	$theme_version  = wp_get_theme()->get( 'Version' );
+	$parent_version = wp_get_theme( 'twentytwenty' )->get( 'Version' );
+
+	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css', [], $parent_version );
+	wp_enqueue_style( 'theme-style', get_stylesheet_uri(), [ 'parent-style' ], $theme_version );
+}
+
+/**
+ * Enqueues the block editor styles.
+ *
+ * @return void
+ */
+function block_editor_styles() : void {
+	$theme_version = wp_get_theme()->get( 'Version' );
+	wp_enqueue_style( 'theme-block-style', get_theme_file_uri( 'assets/styles/editor-styles.css' ), [], $theme_version );
 }
