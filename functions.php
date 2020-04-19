@@ -68,6 +68,24 @@ function enqueue_styles() : void {
 	$parent_version = wp_get_theme( 'twentytwenty' )->get( 'Version' );
 
 	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css', [], $parent_version );
+	wp_enqueue_style(
+		'font-poppins',
+		'https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap',
+		[],
+		$theme_version
+	);
+	wp_enqueue_style(
+		'font-francois-one',
+		'https://fonts.googleapis.com/css2?family=Francois+One&display=swap',
+		[],
+		$theme_version
+	);
+	wp_enqueue_style(
+		'font-karla',
+		'https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap',
+		[],
+		$theme_version
+	);
 	wp_enqueue_style( 'theme-style', get_stylesheet_uri(), [ 'parent-style' ], $theme_version );
 }
 
@@ -78,5 +96,23 @@ function enqueue_styles() : void {
  */
 function block_editor_styles() : void {
 	$theme_version = wp_get_theme()->get( 'Version' );
+	wp_enqueue_style(
+		'font-poppins',
+		'https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap',
+		[],
+		$theme_version
+	);
+	wp_enqueue_style(
+		'font-francois-one',
+		'https://fonts.googleapis.com/css2?family=Francois+One&display=swap',
+		[],
+		$theme_version
+	);
+	wp_enqueue_style(
+		'font-karla',
+		'https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap',
+		[],
+		$theme_version
+	);
 	wp_enqueue_style( 'theme-block-style', get_theme_file_uri( 'assets/styles/editor-styles.css' ), [], $theme_version );
 }
