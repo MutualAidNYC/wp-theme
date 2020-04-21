@@ -31,6 +31,15 @@ body, .entry-content {
 	font-family: var( --font-body );
 }
 
+.entry-content h1, 
+.entry-content h2, 
+.entry-content h3, 
+.entry-content h4, 
+.entry-content h5,
+.entry-content h6 {
+	font-family: var( --font-header );
+}
+
 h1, h2, h4, h5, h6 {
 	font-family: var( --font-header );
 	font-weight: 700;
@@ -121,3 +130,8 @@ a {
 .social-icons a {
 	background-color: var( --color-accent-text );
 }
+
+
+.overlay-header .header-inner {
+	color: white;
+}		
