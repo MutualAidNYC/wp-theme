@@ -81,6 +81,7 @@ function enqueue_styles() : void {
 	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css', [], $parent_version );
 
 	// Enqueue fonts.
+	// phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 	wp_enqueue_style( 'theme-fonts', fonts_url(), array(), null );
 
 	// Enqueue theme CSS variables.
