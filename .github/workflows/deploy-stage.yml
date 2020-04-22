@@ -17,6 +17,6 @@ jobs:
         # Deployment destination server & path. Formatted as protocol://domain.com:port/full/destination/path/
         ftp-server: sftp://sftp.wp.com:22/htdocs/wp-content/themes/wp-theme
         # FTP account username
-        ftp-username: ${ SFTP_USERNAME }
+        ftp-username: ${{ secrets.SFTP_USERNAME }}
         # FTP account password
-        ftp-password: ${ SFTP_PASSWORD }
+        ftp-password: ${{ secrets.SFTP_PASSWORD }}
