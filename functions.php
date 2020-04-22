@@ -77,15 +77,15 @@ function enqueue_styles() : void {
 
 	$parent_version = wp_get_theme( 'twentytwenty' )->get( 'Version' );
 
-	// Enqueue fonts
-	wp_enqueue_style( 'mutualaidnyc-fonts', fonts_url(), array(), null );
-
-	// Theme variables
-	wp_enqueue_style( 'mutualaid-variables-style', get_stylesheet_directory_uri() . '/assets/variables.css', array(), wp_get_theme()->get( 'Version' ) );
-
 	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css', [], $parent_version );
 
-	wp_enqueue_style( 'theme-style', get_stylesheet_uri(), [ 'parent-style' ], $theme_version );
+	// Enqueue fonts.
+	wp_enqueue_style( 'theme-fonts', fonts_url(), array(), null );
+
+	// Enqueue theme CSS variables.
+	wp_enqueue_style( 'theme-style-variables', get_stylesheet_directory_uri() . '/assets/variables.css', array(), wp_get_theme()->get( 'Version' ) );
+
+	wp_enqueue_style( 'theme-style', get_stylesheet_uri(), [ 'parent-style', 'theme-style-variables' ], $theme_version );
 }
 
 /**
