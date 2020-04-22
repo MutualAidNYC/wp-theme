@@ -21,4 +21,4 @@ jobs:
         # FTP account password
         ftp-password: ${{ secrets.SFTP_PASSWORD }}
         known-hosts: "sftp.wp.com ssh-rsa ${{ secrets.SFTP_HOSTHASH }} "
-        git-ftp-args: --dry-run --insecure # TESTING ONLY
+        git-ftp-args: --insecure
