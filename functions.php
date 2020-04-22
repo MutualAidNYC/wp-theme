@@ -61,7 +61,7 @@ function setup() : void {
 	// Enqueue editor styles.
 	add_editor_style(
 		array(
-			mutualaidnyc_fonts_url(),
+			fonts_url(),
 			'assets/variables.css',
 			'style-editor.css',
 		)
@@ -78,16 +78,15 @@ function enqueue_styles() : void {
 	$theme_version  = wp_get_theme()->get( 'Version' );
 	$parent_version = wp_get_theme( 'twentytwenty' )->get( 'Version' );
 
-	// Enqueue fonts.
-	// phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
-	wp_enqueue_style( 'mutualaidnyc-fonts', mutualaidnyc_fonts_url(), array(), null );
-
-	// Theme variables.
-	wp_enqueue_style( 'mutualaid-variables-style', get_stylesheet_directory_uri() . '/assets/variables.css', array(), wp_get_theme()->get( 'Version' ) );
-
 	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css', [], $parent_version );
 
-	wp_enqueue_style( 'theme-style', get_stylesheet_uri(), [ 'parent-style' ], $theme_version );
+	// Enqueue fonts.
+	wp_enqueue_style( 'theme-fonts', fonts_url(), array(), null );
+
+	// Enqueue theme CSS variables.
+	wp_enqueue_style( 'theme-style-variables', get_stylesheet_directory_uri() . '/assets/variables.css', array(), wp_get_theme()->get( 'Version' ) );
+
+	wp_enqueue_style( 'theme-style', get_stylesheet_uri(), [ 'parent-style', 'theme-style-variables' ], $theme_version );
 }
 
 /**
@@ -95,7 +94,7 @@ function enqueue_styles() : void {
  *
  * @return string
  */
-function mutualaidnyc_fonts_url() : string {
+function fonts_url() : string {
 	$fonts_url = '';
 
 	$font_families   = array();

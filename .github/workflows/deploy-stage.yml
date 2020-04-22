@@ -1,0 +1,24 @@
+name: Deploy to staging
+
+on:
+  push:
+    branches: [ master, try/sftp-deploy ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: FTP Deploy
+      uses: SamKirkland/FTP-Deploy-Action@3.0.0
+      with:
+        # Deployment destination server & path. Formatted as protocol://domain.com:port/full/destination/path/
+        ftp-server: sftp://sftp.wp.com:22/htdocs/wp-content/themes/wp-theme
+        # FTP account username
+        ftp-username: ${{ secrets.SFTP_USERNAME }}
+        # FTP account password
+        ftp-password: ${{ secrets.SFTP_PASSWORD }}
+        known-hosts: "sftp.wp.com ssh-rsa ${{ secrets.SFTP_HOSTHASH }} "
+        git-ftp-args: --insecure
