@@ -91,8 +91,9 @@ function enqueue_styles() : void {
 /**
  * Add Google webfonts
  *
+ * @return string
  */
-function mutualaidnyc_fonts_url() {
+function mutualaidnyc_fonts_url() : string {
 	$fonts_url = '';
 
 	$font_families = array();
