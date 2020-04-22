@@ -23,6 +23,7 @@ body, .entry-content {
 
 .entry-content h3 {
 	font-family: var( --font-compressed );
+}
 
 h1, h2, h4, h5, h6 {
 	font-family: var( --font-header );
