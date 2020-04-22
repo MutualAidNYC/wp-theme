@@ -60,7 +60,7 @@ function setup() : void {
 
 	// Enqueue editor styles.
 	add_editor_style( array(
-		mutualaidnyc_fonts_url(),
+		fonts_url(),
 		'assets/variables.css',
 		'style-editor.css'
 	) );
@@ -78,7 +78,7 @@ function enqueue_styles() : void {
 	$parent_version = wp_get_theme( 'twentytwenty' )->get( 'Version' );
 
 	// Enqueue fonts
-	wp_enqueue_style( 'mutualaidnyc-fonts', mutualaidnyc_fonts_url(), array(), null );
+	wp_enqueue_style( 'mutualaidnyc-fonts', fonts_url(), array(), null );
 
 	// Theme variables
 	wp_enqueue_style( 'mutualaid-variables-style', get_stylesheet_directory_uri() . '/assets/variables.css', array(), wp_get_theme()->get( 'Version' ) );
@@ -93,7 +93,7 @@ function enqueue_styles() : void {
  *
  * @return string
  */
-function mutualaidnyc_fonts_url() : string {
+function fonts_url() : string {
 	$fonts_url = '';
 
 	$font_families = array();
