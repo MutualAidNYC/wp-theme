@@ -1,0 +1,15 @@
+:root {
+	--color-primary-text: #000000;
+	--color-accent-text: #c24532;
+	--color-accent-border: #e6a290;
+	--color-dark-text: #47133d;
+	--color-dark-border: #a17193;
+	--color-dark-alt-text: #204045;
+	--color-dark-alt-border: #6b9495;
+	--color-accent-background: #f7cf56;
+	--color-light-background: #a4cacb;
+
+	--font-header: 'Poppins', sans-serif;
+	--font-body: 'Karla', sans-serif;
+	--font-compressed: 'Francois One', sans-serif;
+}
