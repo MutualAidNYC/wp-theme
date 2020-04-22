@@ -2,3 +2,4 @@
 wordpress
 *.code-workspace
 twentytwenty
+/vendor/
