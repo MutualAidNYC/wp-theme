@@ -18,7 +18,6 @@ function setup() : void {
 	remove_action( 'wp_enqueue_scripts', 'twentytwenty_register_styles' );
 	remove_action( 'enqueue_block_editor_assets', 'twentytwenty_block_editor_styles', 1 );
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_styles', 10 );
-	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\block_editor_styles' );
 
 	add_filter( 'twentytwenty_get_elements_array', '__return_empty_array' );
 
@@ -55,6 +54,16 @@ function setup() : void {
 		],
 	];
 	add_theme_support( 'editor-color-palette', $editor_color_palette );
+
+	// Add support for editor styles.
+	add_theme_support( 'editor-styles' );
+
+	// Enqueue editor styles.
+	add_editor_style( array(
+		mutualaidnyc_fonts_url(),
+		'assets/variables.css',
+		'style-editor.css'
+	) );
 }
 
 /**
@@ -65,54 +74,36 @@ function setup() : void {
 function enqueue_styles() : void {
 
 	$theme_version  = wp_get_theme()->get( 'Version' );
+
 	$parent_version = wp_get_theme( 'twentytwenty' )->get( 'Version' );
 
+	// Enqueue fonts
+	wp_enqueue_style( 'mutualaidnyc-fonts', mutualaidnyc_fonts_url(), array(), null );
+
+	// Theme variables
+	wp_enqueue_style( 'mutualaid-variables-style', get_stylesheet_directory_uri() . '/assets/variables.css', array(), wp_get_theme()->get( 'Version' ) );
+
 	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css', [], $parent_version );
-	wp_enqueue_style(
-		'font-poppins',
-		'https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap',
-		[],
-		$theme_version
-	);
-	wp_enqueue_style(
-		'font-francois-one',
-		'https://fonts.googleapis.com/css2?family=Francois+One&display=swap',
-		[],
-		$theme_version
-	);
-	wp_enqueue_style(
-		'font-karla',
-		'https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap',
-		[],
-		$theme_version
-	);
+
 	wp_enqueue_style( 'theme-style', get_stylesheet_uri(), [ 'parent-style' ], $theme_version );
 }
 
 /**
- * Enqueues the block editor styles.
+ * Add Google webfonts
  *
- * @return void
+ * @return string
  */
-function block_editor_styles() : void {
-	$theme_version = wp_get_theme()->get( 'Version' );
-	wp_enqueue_style(
-		'font-poppins',
-		'https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap',
-		[],
-		$theme_version
-	);
-	wp_enqueue_style(
-		'font-francois-one',
-		'https://fonts.googleapis.com/css2?family=Francois+One&display=swap',
-		[],
-		$theme_version
-	);
-	wp_enqueue_style(
-		'font-karla',
-		'https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap',
-		[],
-		$theme_version
-	);
-	wp_enqueue_style( 'theme-block-style', get_theme_file_uri( 'assets/styles/editor-styles.css' ), [], $theme_version );
+function mutualaidnyc_fonts_url() : string {
+	$fonts_url = '';
+
+	$font_families = array();
+	$font_families[] = 'family=Poppins:wght@700;900';
+	$font_families[] = 'family=Francois+One';
+	$font_families[] = 'family=Karla:ital,wght@0,400;0,700;1,400;1,700';
+	$font_families[] = 'display=swap';
+
+	// Make a single request for the theme fonts
+	$fonts_url = 'https://fonts.googleapis.com/css2?' . implode( '&', $font_families );
+
+	return $fonts_url;
 }

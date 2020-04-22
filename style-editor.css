@@ -1,0 +1,83 @@
+
+/*--------------------------------------------------------------
+# Editor Styles 
+#
+# This is the place to enter any custom overrides or structural 
+# styles for the block editor.
+--------------------------------------------------------------*/
+
+p,
+ol,
+ul,
+dl,
+dt {
+	font-family: var( --font-body );
+}
+
+.editor-post-title__block .editor-post-title__input,
+.wp-block h1,
+.wp-block h2,
+.wp-block h4,
+.wp-block h5,
+.wp-block h6,
+.has-drop-cap:not(:focus)::first-letter,
+cite,
+figcaption,
+.wp-caption-text {
+	font-family: var( --font-header );
+}
+
+.editor-post-title__input,
+.wp-block h1 {
+	font-weight: 900;
+	color: var( --color-dark-alt-text );
+	font-size: 3em;
+}
+
+.wp-block h2 {
+	color: var( --color-accent-text );
+}
+
+.wp-block h3 {
+	font-family: var( --font-compressed );
+	font-size: 1em;
+	color: var( --color-dark-alt-text );
+}
+
+.wp-block h4 {
+	color: var( --color-dark-text );
+	background-color: var( --color-accent-background );
+	font-size: 1.75em;
+}
+
+.block-editor-rich-text__editable a {
+	color: var( --color-accent-text );
+}
+
+.wp-block-button .wp-block-button__link {
+	font-family: var( --font-header );
+	font-size: .8em;
+}
+.is-style-outline .wp-block-button__link {
+	border-width: 4px;
+}
+
+.wp-block-pullquote.is-style-solid-color blockquote p {
+	font-size: 1.5em;
+}
+.wp-block-quote {
+	border-left-width: 0;
+}
+.wp-block-quote::before {
+	content: '\201C';
+	color: var( --color-dark-border );
+	font-size: 4em;
+	position: absolute;
+	left: -60px;
+	line-height: 1;
+}
+
+.wp-block-quote__citation {
+	color: var( --color-dark-text );
+	font-family: var( --font-body );
+}
