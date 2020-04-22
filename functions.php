@@ -59,11 +59,13 @@ function setup() : void {
 	add_theme_support( 'editor-styles' );
 
 	// Enqueue editor styles.
-	add_editor_style( array(
-		fonts_url(),
-		'assets/variables.css',
-		'style-editor.css'
-	) );
+	add_editor_style(
+		array(
+			fonts_url(),
+			'assets/variables.css',
+			'style-editor.css',
+		)
+	);
 }
 
 /**
@@ -74,12 +76,12 @@ function setup() : void {
 function enqueue_styles() : void {
 
 	$theme_version  = wp_get_theme()->get( 'Version' );
-
 	$parent_version = wp_get_theme( 'twentytwenty' )->get( 'Version' );
 
 	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css', [], $parent_version );
 
 	// Enqueue fonts.
+	// phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 	wp_enqueue_style( 'theme-fonts', fonts_url(), array(), null );
 
 	// Enqueue theme CSS variables.
@@ -96,13 +98,13 @@ function enqueue_styles() : void {
 function fonts_url() : string {
 	$fonts_url = '';
 
-	$font_families = array();
+	$font_families   = array();
 	$font_families[] = 'family=Poppins:wght@700;900';
 	$font_families[] = 'family=Francois+One';
 	$font_families[] = 'family=Karla:ital,wght@0,400;0,700;1,400;1,700';
 	$font_families[] = 'display=swap';
 
-	// Make a single request for the theme fonts
+	// Make a single request for the theme fonts.
 	$fonts_url = 'https://fonts.googleapis.com/css2?' . implode( '&', $font_families );
 
 	return $fonts_url;
