@@ -1,0 +1,77 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-mutualaidnyc-media-border {
+	display: grid;
+	grid-template-columns: 140px 1fr;
+	grid-template-rows: auto;
+	border: 10px solid;
+}
+
+.wp-block-mutualaidnyc-media-border.has-media-on-the-right {
+	grid-template-columns: 1fr 140px;
+}
+
+.wp-block-mutualaidnyc-media-border__media {
+	height: 100%;
+	min-height: 140px;
+	background-size: cover;
+	grid-column: 1;
+	grid-row: 1;
+	margin: 0;
+}
+
+.wp-block-mutualaidnyc-media-border__content {
+	grid-column: 2;
+	grid-row: 1;
+	padding-left: 3rem;
+	word-break: break-word;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.wp-block-mutualaidnyc-media-border__media img {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+.wp-block-mutualaidnyc-media-border.has-background {
+	color: var(--color-primary-text);
+	border-color: var(--color-primary-text);
+}
+
+.wp-block-mutualaidnyc-media-border.has-secondary-color {
+	color: var(--color-accent-text);
+	border-color: var(--color-accent-border);
+}
+
+.wp-block-mutualaidnyc-media-border.has-dark-color {
+	color: var(--color-dark-text);
+	border-color: var(--color-dark-border);
+}
+
+.wp-block-mutualaidnyc-media-border.has-dark-alt-color {
+	color: var(--color-dark-alt-text);
+	border-color: var(--color-dark-alt-border);
+}
+
+.wp-block-mutualaidnyc-media-border.has-accent-background-color {
+	color: var(--color-accent-background);
+	border-color: var(--color-accent-background);
+}
+
+.wp-block-mutualaidnyc-media-border.has-light-background-color {
+	color: var(--color-light-background);
+	border-color: var(--color-light-background);
+}

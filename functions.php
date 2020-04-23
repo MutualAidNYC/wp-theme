@@ -7,6 +7,13 @@
 
 namespace MutualAidNYC;
 
+define( 'MANY_ROOT_PATH', get_stylesheet_directory() );
+define( 'MANY_ROOT_URL', get_stylesheet_directory_uri() );
+define( 'MANY_ASSETS_PATH', MANY_ROOT_PATH . '/assets' );
+define( 'MANY_ASSETS_URL', MANY_ROOT_URL . '/assets' );
+
+require_once MANY_ROOT_PATH . '/blocks/blocks.php';
+
 add_action( 'after_setup_theme', __NAMESPACE__ . '\\setup', 11 );
 
 /**
@@ -18,6 +25,7 @@ function setup() : void {
 	remove_action( 'wp_enqueue_scripts', 'twentytwenty_register_styles' );
 	remove_action( 'enqueue_block_editor_assets', 'twentytwenty_block_editor_styles', 1 );
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_styles', 10 );
+	add_action( 'init', __NAMESPACE__ . '\\block_init' );
 
 	add_filter( 'twentytwenty_get_elements_array', '__return_empty_array' );
 

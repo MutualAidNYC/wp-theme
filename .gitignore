@@ -3,3 +3,6 @@ wordpress
 *.code-workspace
 twentytwenty
 /vendor/
+node_modules
+index.js.map
+assets/blocks

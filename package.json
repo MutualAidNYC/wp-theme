@@ -1,0 +1,23 @@
+{
+	"name": "mutualaid-nyc",
+	"version": "0.1.0",
+	"description": "Example block written with ESNext standard and JSX support – build step required.",
+	"author": "The WordPress Contributors",
+	"license": "GPL-2.0-or-later",
+	"main": "assets/blocks/index.js",
+	"scripts": {
+		"build": "wp-scripts build ./blocks/**/index.js --output-path=assets/blocks",
+		"format:js": "wp-scripts format-js ./blocks",
+		"lint:css": "wp-scripts lint-style ./blocks ./assets",
+		"lint:js": "wp-scripts lint-js ./blocks",
+		"start": "wp-scripts start ./blocks/**/index.js --output-path=assets/blocks",
+		"packages-update": "wp-scripts packages-update"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^8.0.1"
+	},
+	"dependencies": {
+		"classnames": "^2.2.6",
+		"lodash": "^4.17.15"
+	}
+}
