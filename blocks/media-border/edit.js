@@ -14,6 +14,7 @@ import {
 	FocalPointPicker,
 	TextareaControl,
 	ExternalLink,
+	ToolbarGroup,
 } from '@wordpress/components';
 import {
 	BlockControls,
@@ -115,11 +116,26 @@ class MediaBorderEdit extends Component {
 	render() {
 		const {
 			className,
-			attributes: { mediaUrl, focalPoint, mediaAlt, content },
+			attributes: { mediaUrl, focalPoint, mediaAlt, content, align },
 			setAttributes,
 			color,
 			setColor,
 		} = this.props;
+
+		const toolbarControls = [
+			{
+				icon: 'align-left',
+				title: __( 'Show media on left' ),
+				isActive: align === 'left',
+				onClick: () => setAttributes( { align: 'left' } ),
+			},
+			{
+				icon: 'align-right',
+				title: __( 'Show media on right' ),
+				isActive: align === 'right',
+				onClick: () => setAttributes( { align: 'right' } ),
+			},
+		];
 
 		return (
 			<>
@@ -164,8 +180,12 @@ class MediaBorderEdit extends Component {
 						/>
 					</PanelBody>
 				</InspectorControls>
+				<BlockControls>
+					<ToolbarGroup controls={ toolbarControls } />
+				</BlockControls>
 				<div
 					className={ classnames( className, {
+						'has-media-on-right': align === 'right',
 						'has-background': color.color,
 						[ color.class ]: color.class,
 					} ) }
