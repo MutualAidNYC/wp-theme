@@ -14,11 +14,13 @@ export default function MediaBorderSave( { attributes } ) {
 		content,
 		color,
 		customColor,
+		align,
 	} = attributes;
 
 	const colorClass = getColorClassName( 'color', color );
 
 	const mediaClasses = classnames( className, {
+		'has-media-on-right': align === 'right',
 		'has-text-color has-background': color || customColor,
 		[ colorClass ]: colorClass,
 	} );
