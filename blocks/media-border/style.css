@@ -12,7 +12,7 @@
 	border: 10px solid;
 }
 
-.wp-block-mutualaidnyc-media-border.has-media-on-the-right {
+.wp-block-mutualaidnyc-media-border.has-media-on-right {
 	grid-template-columns: 1fr 140px;
 }
 
@@ -25,14 +25,23 @@
 	margin: 0;
 }
 
+.wp-block-mutualaidnyc-media-border.has-media-on-right .wp-block-mutualaidnyc-media-border__media {
+	grid-column: 2;
+}
+
 .wp-block-mutualaidnyc-media-border__content {
 	grid-column: 2;
 	grid-row: 1;
-	padding-left: 3rem;
+	padding: 0 1rem 0 3rem;
 	word-break: break-word;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+}
+
+.wp-block-mutualaidnyc-media-border.has-media-on-right .wp-block-mutualaidnyc-media-border__content {
+	grid-column: 1;
+	padding: 0 3rem 0 1rem;
 }
 
 .wp-block-mutualaidnyc-media-border__media img {
