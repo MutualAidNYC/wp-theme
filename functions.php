@@ -91,6 +91,38 @@ function enqueue_styles() : void {
 }
 
 /**
+ * Register block style variations.
+ */
+if ( function_exists( 'register_block_style' ) ) {
+	register_block_style(
+		'core/media-text',
+		array(
+			'name'         => 'border-dark',
+			'label'        => 'Dark',
+			'style_handle' => 'theme-style',
+		)
+	);
+
+	register_block_style(
+		'core/media-text',
+		array(
+			'name'         => 'border-alt',
+			'label'        => 'Alt',
+			'style_handle' => 'theme-style',
+		)
+	);
+
+	register_block_style(
+		'core/media-text',
+		array(
+			'name'         => 'border-accent',
+			'label'        => 'Accent',
+			'style_handle' => 'theme-style',
+		)
+	);
+}
+
+/**
  * Add Google webfonts
  *
  * @return string
