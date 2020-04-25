@@ -14,7 +14,7 @@
 /*--------------------------------------------------------------
 # Base Styles
 #
-# These provide a baseline for all front-end styles. 
+# These provide a baseline for all front-end styles.
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
@@ -89,6 +89,55 @@ a {
 }
 
 /*--------------------------------------------------------------
+# Navigation
+--------------------------------------------------------------*/
+
+.primary-menu > li {
+	margin-left: 2rem;
+}
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+
+.site-description {
+	display: none;
+}
+
+.cover-header {
+	background-color: var( --color-dark-alt-text );
+}
+
+.cover-header .cover-header-inner-wrapper {
+	justify-content: center;
+	min-height: auto;
+	height: 320px;
+	max-height: 100vh;
+}
+
+.admin-bar .cover-header-inner-wrapper {
+	max-height: calc( 100vh - 32px );
+}
+
+.home .cover-header-inner-wrapper {
+	height: 450px;
+}
+
+
+.cover-header-inner {
+	padding: 0;
+}
+
+.cover-header .entry-header .entry-title {
+	font-size: 2em;
+}
+
+.to-the-content-wrapper {
+	opacity: 0.5;
+	top: calc( 100% + 8rem );
+}
+
+/*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
 
@@ -100,7 +149,7 @@ a {
 /*--------------------------------------------------------------
 # Block Styles
 #
-# These provide front-end block styles. 
+# These provide front-end block styles.
 --------------------------------------------------------------*/
 
 .wp-block-button__link {
