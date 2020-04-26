@@ -96,3 +96,8 @@ figcaption,
 	color: var(--color-accent-text);
 	border: 10px solid var(--color-accent-border);
 }
+
+div[class*="is-style-border-"].wp-block-media-text {
+	margin: auto;
+	max-width: var(--default-content-width);
+}
