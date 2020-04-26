@@ -20,6 +20,8 @@ function setup() : void {
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_styles', 10 );
 
 	add_filter( 'twentytwenty_get_elements_array', '__return_empty_array' );
+	add_filter( 'theme_mod_custom_logo', '__return_true' );
+	add_filter( 'get_custom_logo', __NAMESPACE__ . '\\filter_logo' );
 
 	$editor_color_palette = [
 		[
@@ -108,4 +110,16 @@ function fonts_url() : string {
 	$fonts_url = 'https://fonts.googleapis.com/css2?' . implode( '&', $font_families );
 
 	return $fonts_url;
+}
+
+/**
+ * Filters the logo image.
+ *
+ * @param string $html The original HTML.
+ * @return string      HTML with SVG.
+ */
+function filter_logo( string $html ) : string {
+	// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+	$svg_markup = file_get_contents( __DIR__ . '/assets/logo.svg' );
+	return str_replace( '></', ">$svg_markup</", $html );
 }
