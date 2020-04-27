@@ -81,3 +81,23 @@ figcaption,
 	color: var( --color-dark-text );
 	font-family: var( --font-body );
 }
+
+.is-style-border-dark {
+	color: var(--color-dark-text);
+	border: 10px solid var(--color-dark-border);
+}
+
+.is-style-border-alt {
+	color: 10px solid var(--color-dark-alt-text);
+	border: 10px solid var(--color-dark-alt-border);
+}
+
+.is-style-border-accent {
+	color: var(--color-accent-text);
+	border: 10px solid var(--color-accent-border);
+}
+
+div[class*="is-style-border-"].wp-block-media-text {
+	margin: auto;
+	max-width: var(--default-content-width);
+}
