@@ -68,6 +68,10 @@ a {
 	color: var( --color-accent-text );
 }
 
+.widget_text p, .widget_text ol, .widget_text ul, .widget_text dl, .widget_text dt, .widget-content .rssSummary {
+	font-family: var( --font-body );
+}
+
 /*--------------------------------------------------------------
 # Utilities
 --------------------------------------------------------------*/
@@ -86,6 +90,22 @@ a {
 }
 :root .has-dark-alt-color {
 	color: var( --color-dark-alt-text );
+}
+:root .has-dark-alt-background-color {
+	background-color: var( --color-dark-alt-text );
+}
+:root .has-accent-background-color {
+	color: var( --color-accent-background );
+	background-color: inherit;
+}
+:root .has-accent-background-background-color {
+	background-color: var( --color-accent-background );
+}
+:root .has-light-background-color {
+	color: var( --color-light-background );
+}
+:root .has-light-background-background-color {
+	background-color: var( --color-light-background );
 }
 
 /*--------------------------------------------------------------
@@ -160,6 +180,16 @@ a {
 # These provide front-end block styles.
 --------------------------------------------------------------*/
 
+button, .button, .faux-button, .wp-block-button__link, .wp-block-file .wp-block-file__button, input[type="button"], input[type="reset"], input[type="submit"] {
+	background: var( --color-primary-text );
+	font-family: var( --font-header );
+	border-radius: 1000px;
+}
+
+.wp-block-button.is-style-outline {
+	color: var( --color-primary-text );
+}
+
 .wp-block-button__link {
 	background-color: var( --color-primary-text );
 }
@@ -192,6 +222,22 @@ a {
 
 .wp-block-quote cite {
 	color: var( --color-dark-text );
+	font-family: var( --font-body );
+}
+
+.has-drop-cap:not(:focus)::first-letter,
+	.entry-content cite,
+	.entry-content figcaption,
+	.entry-content table,
+	.entry-content address,
+	.entry-content .wp-caption-text,
+	.entry-content .wp-block-file,
+	.entry-content .wp-block-archives,
+	.entry-content .wp-block-categories,
+	.entry-content .wp-block-latest-posts,
+	.entry-content .wp-block-latest-comments,
+	.entry-content .wp-block-cover-image p,
+	.entry-content .wp-block-pullquote {
 	font-family: var( --font-body );
 }
 
