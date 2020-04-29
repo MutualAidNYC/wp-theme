@@ -101,3 +101,33 @@ div[class*="is-style-border-"].wp-block-media-text {
 	margin: auto;
 	max-width: var(--default-content-width);
 }
+
+.wp-block-coblocks-accordion-item,
+.wp-block-coblocks-accordion-item__title,
+.wp-block-coblocks-accordion-item__content {
+	border-radius: 0;
+}
+.wp-block-coblocks-accordion-item__title {
+	font-family: var( --font-header );
+	font-weight: 700;
+}
+.wp-block-coblocks-accordion-item {
+	position: relative;
+}
+.wp-block-coblocks-accordion-item::after {
+	content: '\FF0B';
+	right: 10px;
+	font-size: 30px;
+	line-height: 51px;
+	opacity: 0.5;
+	font-family: monospace;
+	position: absolute;
+	top: 0;
+}
+.wp-block-coblocks-accordion-item--open::after {
+	content: '\FF0D';
+}
+.wp-block-coblocks-accordion-item__title.has-background {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
