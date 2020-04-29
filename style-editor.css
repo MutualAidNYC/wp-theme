@@ -107,10 +107,6 @@ div[class*="is-style-border-"].wp-block-media-text {
 .wp-block-coblocks-accordion-item__content {
 	border-radius: 0;
 }
-.wp-block-coblocks-accordion-item__title {
-	font-family: var( --font-header );
-	font-weight: 700;
-}
 .wp-block-coblocks-accordion-item {
 	position: relative;
 }
@@ -119,15 +115,22 @@ div[class*="is-style-border-"].wp-block-media-text {
 	right: 10px;
 	font-size: 30px;
 	line-height: 51px;
-	opacity: 0.5;
 	font-family: monospace;
 	position: absolute;
 	top: 0;
+	opacity: 0.5;
 }
 .wp-block-coblocks-accordion-item--open::after {
 	content: '\FF0D';
 }
+.wp-block-coblocks-accordion-item__title {
+	font-family: var( --font-header );
+	font-weight: 700;
+	color: var( --color-dark-alt-text );
+	background-color: rgba(215, 230, 231, 0.5);
+}
 .wp-block-coblocks-accordion-item__title.has-background {
 	padding-top: 10px;
 	padding-bottom: 10px;
+	color: #fff;
 }

@@ -278,6 +278,8 @@ div[class*="is-style-border-"] > .wp-block-media-text__content {
 	font-family: var( --font-header );
 	font-weight: 700;
 	list-style: none;
+	color: var( --color-dark-alt-text );
+	background-color: rgba(215, 230, 231, 0.5);
 }
 .wp-block-coblocks-accordion-item__title::-webkit-details-marker {
 	display: none;
@@ -288,8 +290,14 @@ div[class*="is-style-border-"] > .wp-block-media-text__content {
 	left: auto;
 	font-size: 30px;
 	line-height: 51px;
-	opacity: 0.5;
 	font-family: monospace;
+	color: var( --color-light-background );
+}
+.wp-block-coblocks-accordion-item__title.has-background::after {
+	opacity: 0.5;
+}
+.wp-block-coblocks-accordion-item__title.has-text-color::after {
+	color: inherit;
 }
 .wp-block-coblocks-accordion-item > details[open] > .wp-block-coblocks-accordion-item__title::after {
 	content: '\FF0D';
