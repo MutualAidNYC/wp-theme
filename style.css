@@ -42,6 +42,10 @@ h1, h2, h4, h5, h6 {
 	font-weight: 700;
 }
 
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+	text-decoration: none !important; /* Overrides :hover and :active states. */
+}
+
 h1 {
 	font-weight: 900;
 	color: var( --color-secondary-text );
@@ -59,13 +63,24 @@ h3 {
 }
 
 h4 {
-	color: var( --color-tertiary-text );
-	background-color: var( --color-highlight );
+	color: var( --color-dark-text );
 	font-size: 1.75em;
+	line-height: 1.4;
+}
+
+h4 > strong {
+	background-color: var( --color-highlight );
+	padding: 0 .3em;
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
 }
 
 a {
 	color: var( --color-accent-text );
+}
+
+.entry-content a:hover, .entry-content a:focus {
+	text-decoration: underline;
 }
 
 .widget_text p, .widget_text ol, .widget_text ul, .widget_text dl, .widget_text dt, .widget-content .rssSummary {
@@ -164,6 +179,10 @@ a {
 	top: calc( 100% + 8rem );
 }
 
+.template-cover .entry-content {
+	margin-top: 2em;
+}
+
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
@@ -191,8 +210,12 @@ button, .button, .faux-button, .wp-block-button__link, .wp-block-file .wp-block-
 
 .wp-block-button__link {
 	background-color: var( --color-primary-text );
+	transition: opacity ease .2s;
 }
-
+.wp-block-button .wp-block-button__link:hover {
+	text-decoration: none;
+	opacity: 0.7;
+}
 .is-style-outline .wp-block-button__link {
 	border-width: 4px;
 }
