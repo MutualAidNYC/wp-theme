@@ -44,7 +44,7 @@ h1, h2, h4, h5, h6 {
 
 h1 {
 	font-weight: 900;
-	color: var( --color-dark-alt-text );
+	color: var( --color-secondary-text );
 	font-size: 3em;
 }
 
@@ -55,12 +55,12 @@ h2 {
 h3 {
 	font-family: var( --font-compressed );
 	font-size: 1em;
-	color: var( --color-dark-alt-text );
+	color: var( --color-secondary-text );
 }
 
 h4 {
-	color: var( --color-dark-text );
-	background-color: var( --color-accent-background );
+	color: var( --color-tertiary-text );
+	background-color: var( --color-highlight );
 	font-size: 1.75em;
 }
 
@@ -76,36 +76,35 @@ a {
 # Utilities
 --------------------------------------------------------------*/
 
-:root .has-secondary-color {
+:root .has-accent-color {
 	color: var( --color-accent-text );
 }
-:root .has-secondary-background-color {
+:root .has-accent-background-color {
 	background-color: var( --color-accent-text );
 }
-:root .has-dark-color {
-	color: var( --color-dark-text );
+:root .has-secondary-color {
+	color: var( --color-secondary-text );
 }
-:root .has-dark-background-color {
-	background-color: var( --color-dark-text );
+:root .has-secondary-background-color {
+	background-color: var( --color-secondary-text );
 }
-:root .has-dark-alt-color {
-	color: var( --color-dark-alt-text );
+:root .has-tertiary-color {
+	color: var( --color-tertiary-text );
 }
-:root .has-dark-alt-background-color {
-	background-color: var( --color-dark-alt-text );
+:root .has-tertiary-background-color {
+	background-color: var( --color-tertiary-text );
 }
-:root .has-accent-background-color {
-	color: var( --color-accent-background );
-	background-color: inherit;
+:root .has-highlight-color {
+	color: var( --color-highlight );
 }
-:root .has-accent-background-background-color {
-	background-color: var( --color-accent-background );
+:root .has-highlight-background-color {
+	background-color: var( --color-highlight );
 }
-:root .has-light-background-color {
-	color: var( --color-light-background );
+:root .has-highlight-alt-color {
+	color: var( --color-highlight-alt );
 }
-:root .has-light-background-background-color {
-	background-color: var( --color-light-background );
+:root .has-highlight-alt-background-color {
+	background-color: var( --color-highlight-alt );
 }
 
 /*--------------------------------------------------------------
@@ -133,7 +132,7 @@ a {
 }
 
 .cover-header {
-	background-color: var( --color-dark-alt-text );
+	background-color: var( --color-secondary-text );
 }
 
 .cover-header .cover-header-inner-wrapper {
@@ -201,10 +200,10 @@ button, .button, .faux-button, .wp-block-button__link, .wp-block-file .wp-block-
 	border-color: var( --color-accent-border );
 }
 .is-style-outline .wp-block-button__link.has-dark-color {
-	border-color: var( --color-dark-border );
+	border-color: var( --color-tertiary-border );
 }
 .is-style-outline .wp-block-button__link.has-dark-alt-color {
-	border-color: var( --color-dark-alt-border );
+	border-color: var( --color-secondary-border );
 }
 
 .wp-block-quote {
@@ -213,7 +212,7 @@ button, .button, .faux-button, .wp-block-button__link, .wp-block-file .wp-block-
 }
 .wp-block-quote::before {
 	content: '\201C';
-	color: var( --color-dark-border );
+	color: var( --color-tertiary-border );
 	font-size: 4em;
 	position: absolute;
 	left: -60px;
@@ -221,7 +220,7 @@ button, .button, .faux-button, .wp-block-button__link, .wp-block-file .wp-block-
 }
 
 .wp-block-quote cite {
-	color: var( --color-dark-text );
+	color: var( --color-tertiary-text );
 	font-family: var( --font-body );
 }
 
@@ -246,13 +245,13 @@ button, .button, .faux-button, .wp-block-button__link, .wp-block-file .wp-block-
 }
 
 .is-style-border-dark {
-	color: var(--color-dark-text);
-	border: 10px solid var(--color-dark-border);
+	color: var(--color-tertiary-text);
+	border: 10px solid var(--color-tertiary-border);
 }
 
 .is-style-border-alt {
-	color: 10px solid var(--color-dark-alt-text);
-	border: 10px solid var(--color-dark-alt-border);
+	color: 10px solid var(--color-secondary-text);
+	border: 10px solid var(--color-secondary-border);
 }
 
 .is-style-border-accent {
@@ -278,7 +277,7 @@ div[class*="is-style-border-"] > .wp-block-media-text__content {
 	font-family: var( --font-header );
 	font-weight: 700;
 	list-style: none;
-	color: var( --color-dark-alt-text );
+	color: var( --color-secondary-text );
 	cursor: pointer;
 	background-color: rgba(215, 230, 231, 0.5);
 }
@@ -292,7 +291,7 @@ div[class*="is-style-border-"] > .wp-block-media-text__content {
 	font-size: 30px;
 	line-height: 51px;
 	font-family: monospace;
-	color: var( --color-light-background );
+	color: var( --color-highlight-alt );
 }
 .wp-block-coblocks-accordion-item__title.has-background::after {
 	opacity: 0.5;
@@ -310,8 +309,8 @@ div[class*="is-style-border-"] > .wp-block-media-text__content {
 	background-color: var( --color-accent-border );
 }
 .wp-block-coblocks-accordion-item__title:not(.has-background).has-dark-color {
-	background-color: var( --color-dark-border );
+	background-color: var( --color-tertiary-border );
 }
 .wp-block-coblocks-accordion-item__title:not(.has-background).has-dark-alt-color {
-	background-color: var( --color-dark-alt-border );
+	background-color: var( --color-secondary-border );
 }
