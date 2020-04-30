@@ -46,8 +46,15 @@ figcaption,
 
 .wp-block h4 {
 	color: var( --color-dark-text );
-	background-color: var( --color-accent-background );
 	font-size: 1.75em;
+	line-height: 1.4;
+}
+
+.wp-block h4 > strong {
+	background-color: var( --color-accent-background );
+	padding: 0 .3em;
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
 }
 
 .block-editor-rich-text__editable a {
