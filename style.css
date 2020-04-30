@@ -75,6 +75,10 @@ a {
 	color: var( --color-accent-text );
 }
 
+.entry-content a:hover, .entry-content a:focus {
+	text-decoration: underline;
+}
+
 .widget_text p, .widget_text ol, .widget_text ul, .widget_text dl, .widget_text dt, .widget-content .rssSummary {
 	font-family: var( --font-body );
 }
