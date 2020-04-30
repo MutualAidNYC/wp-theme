@@ -199,8 +199,12 @@ button, .button, .faux-button, .wp-block-button__link, .wp-block-file .wp-block-
 
 .wp-block-button__link {
 	background-color: var( --color-primary-text );
+	transition: opacity ease .2s;
 }
-
+.wp-block-button .wp-block-button__link:hover {
+	text-decoration: none;
+	opacity: 0.7;
+}
 .is-style-outline .wp-block-button__link {
 	border-width: 4px;
 }
