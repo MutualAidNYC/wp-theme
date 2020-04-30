@@ -14,12 +14,12 @@ dt {
 	font-family: var( --font-body );
 }
 
-.editor-post-title__block .editor-post-title__input,
-.wp-block h1,
-.wp-block h2,
-.wp-block h4,
-.wp-block h5,
-.wp-block h6,
+.editor-post-title__input,
+h1,
+h2,
+h4,
+h5,
+h6,
 .has-drop-cap:not(:focus)::first-letter,
 cite,
 figcaption,
@@ -27,34 +27,34 @@ figcaption,
 	font-family: var( --font-header );
 }
 
-.wp-block h1 a, .wp-block h2 a, .wp-block h3 a, .wp-block h4 a, .wp-block h5 a, .wp-block h6 a {
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 	text-decoration: none !important; /* Overrides :hover and :active states. */
 }
 
 .editor-post-title__input,
-.wp-block h1 {
+h1 {
 	font-weight: 900;
 	color: var( --color-secondary-text );
 	font-size: 3em;
 }
 
-.wp-block h2 {
+h2 {
 	color: var( --color-accent-text );
 }
 
-.wp-block h3 {
+h3 {
 	font-family: var( --font-compressed );
 	font-size: 1em;
 	color: var( --color-secondary-text );
 }
 
-.wp-block h4 {
+h4 {
 	color: var( --color-tertiary-text );
 	font-size: 1.75em;
 	line-height: 1.4;
 }
 
-.wp-block h4 > strong {
+h4 > strong {
 	background-color: var( --color-highlight );
 	padding: 0 .3em;
 	-webkit-box-decoration-break: clone;
