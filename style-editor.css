@@ -30,7 +30,7 @@ figcaption,
 .editor-post-title__input,
 .wp-block h1 {
 	font-weight: 900;
-	color: var( --color-dark-alt-text );
+	color: var( --color-secondary-text );
 	font-size: 3em;
 }
 
@@ -41,12 +41,12 @@ figcaption,
 .wp-block h3 {
 	font-family: var( --font-compressed );
 	font-size: 1em;
-	color: var( --color-dark-alt-text );
+	color: var( --color-secondary-text );
 }
 
 .wp-block h4 {
-	color: var( --color-dark-text );
-	background-color: var( --color-accent-background );
+	color: var( --color-tertiary-text );
+	background-color: var( --color-highlight );
 	font-size: 1.75em;
 }
 
@@ -70,7 +70,7 @@ figcaption,
 }
 .wp-block-quote::before {
 	content: '\201C';
-	color: var( --color-dark-border );
+	color: var( --color-tertiary-border );
 	font-size: 4em;
 	position: absolute;
 	left: -60px;
@@ -78,18 +78,18 @@ figcaption,
 }
 
 .wp-block-quote__citation {
-	color: var( --color-dark-text );
+	color: var( --color-tertiary-text );
 	font-family: var( --font-body );
 }
 
 .is-style-border-dark {
-	color: var(--color-dark-text);
-	border: 10px solid var(--color-dark-border);
+	color: var(--color-tertiary-text);
+	border: 10px solid var(--color-tertiary-border);
 }
 
 .is-style-border-alt {
-	color: 10px solid var(--color-dark-alt-text);
-	border: 10px solid var(--color-dark-alt-border);
+	color: 10px solid var(--color-secondary-text);
+	border: 10px solid var(--color-secondary-border);
 }
 
 .is-style-border-accent {
@@ -126,7 +126,7 @@ div[class*="is-style-border-"].wp-block-media-text {
 .wp-block-coblocks-accordion-item__title {
 	font-family: var( --font-header );
 	font-weight: 700;
-	color: var( --color-dark-alt-text );
+	color: var( --color-secondary-text );
 	background-color: rgba(215, 230, 231, 0.5);
 }
 .wp-block-coblocks-accordion-item__title.has-background {

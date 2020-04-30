@@ -30,28 +30,28 @@ function setup() : void {
 			'color' => '#000000',
 		],
 		[
-			'slug'  => 'secondary',
-			'name'  => __( 'Secondary', 'mutualaidnyc' ),
+			'slug'  => 'accent',
+			'name'  => __( 'Accent', 'mutualaidnyc' ),
 			'color' => '#c24532',
 		],
 		[
-			'slug'  => 'dark',
-			'name'  => __( 'Dark Accent', 'mutualaidnyc' ),
-			'color' => '#47133d',
-		],
-		[
-			'slug'  => 'dark-alt',
-			'name'  => __( 'Alternative Dark Accent', 'mutualaidnyc' ),
+			'slug'  => 'secondary',
+			'name'  => __( 'Secondary', 'mutualaidnyc' ),
 			'color' => '#204045',
 		],
 		[
-			'slug'  => 'accent-background',
-			'name'  => __( 'Accent Background', 'mutualaidnyc' ),
+			'slug'  => 'tertiary',
+			'name'  => __( 'Tertiary', 'mutualaidnyc' ),
+			'color' => '#47133d',
+		],
+		[
+			'slug'  => 'highlight',
+			'name'  => __( 'Highlight Background', 'mutualaidnyc' ),
 			'color' => '#f7cf56',
 		],
 		[
-			'slug'  => 'light-background',
-			'name'  => __( 'Light Background', 'mutualaidnyc' ),
+			'slug'  => 'highlight-alt',
+			'name'  => __( 'Alternative Highlight Background', 'mutualaidnyc' ),
 			'color' => '#a4cacb',
 		],
 	];
@@ -99,8 +99,8 @@ if ( function_exists( 'register_block_style' ) ) {
 	register_block_style(
 		'core/media-text',
 		array(
-			'name'         => 'border-dark',
-			'label'        => 'Dark',
+			'name'         => 'border-alt',
+			'label'        => 'Secondary',
 			'style_handle' => 'theme-style',
 		)
 	);
@@ -108,8 +108,8 @@ if ( function_exists( 'register_block_style' ) ) {
 	register_block_style(
 		'core/media-text',
 		array(
-			'name'         => 'border-alt',
-			'label'        => 'Alt',
+			'name'         => 'border-dark',
+			'label'        => 'Tertiary',
 			'style_handle' => 'theme-style',
 		)
 	);
