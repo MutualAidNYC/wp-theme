@@ -27,6 +27,10 @@ figcaption,
 	font-family: var( --font-header );
 }
 
+.wp-block h1 a, .wp-block h2 a, .wp-block h3 a, .wp-block h4 a, .wp-block h5 a, .wp-block h6 a {
+	text-decoration: none !important; /* Overrides :hover and :active states. */
+}
+
 .editor-post-title__input,
 .wp-block h1 {
 	font-weight: 900;
