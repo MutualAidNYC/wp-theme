@@ -17,6 +17,7 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\\setup', 11 );
 function setup() : void {
 	remove_action( 'wp_enqueue_scripts', 'twentytwenty_register_styles' );
 	remove_action( 'enqueue_block_editor_assets', 'twentytwenty_block_editor_styles', 1 );
+	remove_action( 'widgets_init', 'twentytwenty_sidebar_registration' );
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_styles', 10 );
 
 	add_filter( 'twentytwenty_get_elements_array', '__return_empty_array' );
