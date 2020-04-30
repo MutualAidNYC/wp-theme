@@ -204,6 +204,17 @@ a {
 	}
 }
 
+@media ( max-width: 1000px ) and ( min-width: 425px ) {
+	.footer-menu-wrapper {
+		width: 100%;
+	}
+	.footer-menu {
+		display: grid;
+		grid-template: 1fr / 1fr 1fr;
+		column-gap: 20px;
+	}
+}
+
 .footer-menu a {
 	color: var( --color-primary-text );
 	font-family: var( --font-header );
