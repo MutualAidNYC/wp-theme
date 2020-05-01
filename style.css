@@ -191,6 +191,35 @@ a {
 # Footer
 --------------------------------------------------------------*/
 
+.reduced-spacing.footer-top-visible .footer-nav-widgets-wrapper, .reduced-spacing.footer-top-hidden #site-footer {
+	border-top-width: 0;
+}
+
+.footer-top {
+	border-bottom: none;
+}
+@media ( min-width: 1000px ) {
+	.footer-top {
+		justify-content: center;
+	}
+}
+
+@media ( max-width: 1000px ) and ( min-width: 425px ) {
+	.footer-menu-wrapper {
+		width: 100%;
+	}
+	.footer-menu {
+		display: grid;
+		grid-template: 1fr / 1fr 1fr;
+	}
+}
+
+.footer-menu a {
+	color: var( --color-primary-text );
+	font-family: var( --font-header );
+	font-size: 0.7em;
+}
+
 .footer-social a,
 .social-icons a {
 	background-color: var( --color-accent-text );
