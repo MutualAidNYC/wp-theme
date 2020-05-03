@@ -370,3 +370,13 @@ div[class*="is-style-border-"] > .wp-block-media-text__content {
 .wp-block-coblocks-accordion-item__title:not(.has-background).has-dark-alt-color {
 	background-color: var( --color-secondary-border );
 }
+
+.entry-content hr, hr.styled-separator {
+	background: currentColor !important; /* Overrides !important in parent styles. */
+}
+.entry-content hr:not(.is-style-dots)::before,
+hr.styled-separator:not(.is-style-dots)::before,
+.entry-content hr:not(.is-style-dots)::after,
+hr.styled-separator:not(.is-style-dots)::after {
+	display: none;
+}

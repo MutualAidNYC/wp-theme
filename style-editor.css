@@ -27,6 +27,10 @@ figcaption,
 	font-family: var( --font-header );
 }
 
+.editor-post-title__input {
+	text-align: center;
+}
+
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 	text-decoration: none !important; /* Overrides :hover and :active states. */
 }
@@ -63,6 +67,10 @@ h4 > strong {
 
 .block-editor-rich-text__editable a {
 	color: var( --color-accent-text );
+}
+
+.wp-block-paragraph.has-background-color {
+	color: #ffffff;
 }
 
 .wp-block-button .wp-block-button__link {
@@ -144,4 +152,19 @@ div[class*="is-style-border-"].wp-block-media-text {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	color: #fff;
+}
+
+.wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
+	max-width: none;
+	border-bottom-width: 1px;
+	border-bottom-color: #6d6d6d;
+}
+.wp-block-separator.is-style-wide {
+	margin-left: -10em;
+	margin-right: -10em;
+}
+.wp-block-separator.is-style-dots::before {
+	font-size: 3.2rem;
+	letter-spacing: 1em;
+	padding-left: 1em;
 }
