@@ -170,15 +170,16 @@ a {
 }
 
 .home .entry-header-inner::before {
-	content: url('./assets/logo_home_teal.svg');
-	width: 420px;
+	background-image: url('./assets/logo_home.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	content: " ";
+	display: block;
+	height: 40vh;
 	margin: auto;
-}
-
-@media ( min-width: 1000px ){
-	.home .entry-header-inner::before {
-		display: block;
-	}
+	max-width: 420px;
+	width: 75%;
 }
 
 .cover-header-inner {
