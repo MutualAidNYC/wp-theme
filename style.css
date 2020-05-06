@@ -165,6 +165,22 @@ a {
 	height: 100vh;
 }
 
+.home .entry-title {
+	visibility: hidden;
+}
+
+.home .entry-header-inner::before {
+	background-image: url('./assets/logo_home.svg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	content: " ";
+	display: block;
+	height: 40vh;
+	margin: auto;
+	max-width: 420px;
+	width: 75%;
+}
 
 .cover-header-inner {
 	padding: 0;
