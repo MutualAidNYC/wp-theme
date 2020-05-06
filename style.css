@@ -187,6 +187,14 @@ a {
 	text-decoration: underline;
 }
 
+.cover-color-overlay {
+	display: none;
+}
+
+.bg-image .cover-color-overlay {
+	display: inherit;
+}
+
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
