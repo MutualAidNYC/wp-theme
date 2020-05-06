@@ -165,6 +165,21 @@ a {
 	height: 100vh;
 }
 
+.home .entry-title {
+	visibility: hidden;
+}
+
+.home .entry-header-inner::before {
+	content: url('./assets/logo_home_teal.svg');
+	width: 420px;
+	margin: auto;
+}
+
+@media ( min-width: 1000px ){
+	.home .entry-header-inner::before {
+		display: block;
+	}
+}
 
 .cover-header-inner {
 	padding: 0;
