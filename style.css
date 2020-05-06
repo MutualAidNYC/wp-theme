@@ -170,7 +170,7 @@ a {
 }
 
 .home .entry-header-inner::before {
-	background-image: url('./assets/logo_home.png');
+	background-image: url('./assets/logo_home.svg');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: contain;
