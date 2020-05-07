@@ -121,6 +121,10 @@ div[class*="is-style-border-"].wp-block-media-text {
 	max-width: var(--default-content-width);
 }
 
+div[class*="is-style-border-"].wp-block-media-text .wp-block-media-text__media > img {
+	display: block;
+}
+
 .wp-block-coblocks-accordion-item,
 .wp-block-coblocks-accordion-item__title,
 .wp-block-coblocks-accordion-item__content {
