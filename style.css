@@ -87,6 +87,29 @@ a {
 	font-family: var( --font-body );
 }
 
+.color-accent,
+.color-accent-hover:focus,
+.color-accent-hover:hover {
+	color: var( --color-accent-text );
+}
+
+.bg-accent,
+.bg-accent-hover:focus,
+.bg-accent-hover:hover {
+	background-color: var( --color-accent-text );
+}
+
+.border-color-accent,
+.border-color-accent-hover:focus,
+.border-color-accent-hover:hover {
+	border-color: var( --color-accent-border );
+}
+
+.fill-children-accent,
+.fill-children-accent * {
+	fill: var( --color-accent-text );
+}
+
 /*--------------------------------------------------------------
 # Utilities
 --------------------------------------------------------------*/
@@ -209,6 +232,115 @@ a {
 
 .bg-image .cover-color-overlay {
 	display: inherit;
+}
+
+/*--------------------------------------------------------------
+# Content
+--------------------------------------------------------------*/
+
+.section-inner.thin,
+.post-meta-wrapper,
+.post-nav-links,
+.author-bio,
+.entry-content > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide),
+[class*="__inner-container"] > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide),
+[class*="__inner-container"] .wp-block-group:not(.alignfull):not(.alignwide):not(.alignleft):not(.alignright),
+[class*="__inner-container"] .wp-block-cover:not(.alignfull):not(.alignwide):not(.alignleft):not(.alignright),
+.alignfull > figcaption,
+.alignfull > .wp-caption-text,
+.comment-respond p:not(.comment-notes) {
+	max-width: var( --default-content-width );
+}
+
+@media ( min-width: 660px ) {
+	.entry-content > p .alignleft,
+	.entry-content > .wp-block-image .alignleft,
+	figure.wp-block-gallery.alignleft {
+		margin-left: calc(( 100vw - var( --default-content-width ) - 8rem ) / -2);
+	}
+
+	.entry-content > p .alignright,
+	.entry-content > .wp-block-image .alignright,
+	figure.wp-block-gallery.alignright {
+		margin-right: calc(( 100vw - var( --default-content-width ) - 8rem ) / -2);
+	}
+}
+
+@media ( min-width: 1000px ) {
+	.entry-content > .alignleft,
+	.entry-content > p .alignleft,
+	.entry-content > .wp-block-image .alignleft {
+		right: calc((100vw - var( --default-content-width )) / 2 + var( --default-content-width ) + 2rem);
+		max-width: calc((100% - var( --default-content-width )) / 2 - 6rem);
+	}
+
+	[class*="wp-block"].alignwide [class*="__inner-container"] > .alignleft,
+	[class*="wp-block"].alignwide [class*="__inner-container"] > p .alignleft,
+	[class*="wp-block"].alignwide [class*="__inner-container"] > .wp-block-image .alignleft,
+	[class*="wp-block"].alignfull [class*="__inner-container"] > .alignleft,
+	[class*="wp-block"].alignfull [class*="__inner-container"] > p .alignleft,
+	[class*="wp-block"].alignfull [class*="__inner-container"] > .wp-block-image .alignleft {
+		right: calc((100% - var( --default-content-width )) / 2 + var( --default-content-width ) + 4rem);
+		max-width: calc((100% - var( --default-content-width )) / 2 - 4rem);
+	}
+
+	[class*="wp-block"].alignwide.has-background [class*="__inner-container"] > .alignleft,
+	[class*="wp-block"].alignwide.has-background [class*="__inner-container"] > p .alignleft,
+	[class*="wp-block"].alignwide.has-background [class*="__inner-container"] > .wp-block-image .alignleft {
+		right: calc((100% - var( --default-content-width )) / 2 + var( --default-content-width ));
+	}
+
+	.entry-content > .alignright,
+	.entry-content > p .alignright,
+	.entry-content > .wp-block-image .alignright,
+	[class*="__inner-container"] > .alignright {
+		left: calc((100vw - var( --default-content-width )) / 2 + var( --default-content-width ) + 2rem);
+		max-width: calc((100% - var( --default-content-width )) / 2 - 6rem);
+	}
+
+	[class*="wp-block"].alignwide [class*="__inner-container"] > .alignright,
+	[class*="wp-block"].alignwide [class*="__inner-container"] > p .alignright,
+	[class*="wp-block"].alignwide [class*="__inner-container"] > .wp-block-image .alignright,
+	[class*="wp-block"].alignfull [class*="__inner-container"] > .alignright,
+	[class*="wp-block"].alignfull [class*="__inner-container"] > p .alignright,
+	[class*="wp-block"].alignfull [class*="__inner-container"] > .wp-block-image .alignright {
+		left: calc((100% - var( --default-content-width )) / 2 + var( --default-content-width ) + 4rem);
+		max-width: calc((100% - var( --default-content-width )) / 2 - 4rem);
+	}
+
+	[class*="wp-block"].alignwide.has-background [class*="__inner-container"] > .alignright,
+	[class*="wp-block"].alignwide.has-background [class*="__inner-container"] > p .alignright,
+	[class*="wp-block"].alignwide.has-background [class*="__inner-container"] > .wp-block-image .alignright {
+		left: calc((100% - var( --default-content-width )) / 2 + var( --default-content-width ) + 4rem);
+	}
+}
+
+@media ( min-width: 1220px ) {
+	[class*="wp-block"].alignwide.has-background [class*="__inner-container"] > .alignleft,
+	[class*="wp-block"].alignwide.has-background [class*="__inner-container"] > p .alignleft,
+	[class*="wp-block"].alignwide.has-background [class*="__inner-container"] > .wp-block-image .alignleft {
+		right: calc((100% - var( --default-content-width )) / 2 + var( --default-content-width ) - 2rem);
+	}
+
+	[class*="wp-block"].alignwide.has-background [class*="__inner-container"] > .alignright,
+	[class*="wp-block"].alignwide.has-background [class*="__inner-container"] > p .alignright,
+	[class*="wp-block"].alignwide.has-background [class*="__inner-container"] > .wp-block-image .alignright {
+		left: calc((100% - var( --default-content-width )) / 2 + var( --default-content-width ) + 6rem);
+	}
+}
+
+@media ( min-width: 1280px ) {
+	.entry-content > .alignleft,
+	.entry-content > p .alignleft,
+	.entry-content > .wp-block-image .alignleft {
+		right: calc((100vw - var( --default-content-width )) / 2 + var( --default-content-width ) + 4rem);
+	}
+
+	.entry-content > .alignright,
+	.entry-content > p .alignright,
+	.entry-content > .wp-block-image .alignright {
+		left: calc((100vw - var( --default-content-width )) / 2 + var( --default-content-width ) + 4rem);
+	}
 }
 
 /*--------------------------------------------------------------

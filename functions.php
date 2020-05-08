@@ -24,6 +24,9 @@ function setup() : void {
 	add_filter( 'theme_mod_custom_logo', '__return_true' );
 	add_filter( 'get_custom_logo', __NAMESPACE__ . '\\filter_logo' );
 
+	global $content_width;
+	$content_width = 700;
+
 	$editor_color_palette = [
 		[
 			'slug'  => 'primary',
