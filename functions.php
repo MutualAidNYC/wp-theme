@@ -7,6 +7,8 @@
 
 namespace MutualAidNYC;
 
+use WP_Customize_Manager;
+
 add_action( 'after_setup_theme', __NAMESPACE__ . '\\setup', 11 );
 
 /**
@@ -23,6 +25,7 @@ function setup() : void {
 	add_filter( 'twentytwenty_get_elements_array', '__return_empty_array' );
 	add_filter( 'theme_mod_custom_logo', '__return_true' );
 	add_filter( 'get_custom_logo', __NAMESPACE__ . '\\filter_logo' );
+	add_action( 'customize_register', __NAMESPACE__ . '\\register_customizer', 11 );
 
 	global $content_width;
 	$content_width = 700;
@@ -72,6 +75,25 @@ function setup() : void {
 			'style-editor.css',
 		)
 	);
+
+	// Remove theme support for items that are hard-coded.
+	remove_theme_support( 'custom-background' );
+	remove_theme_support( 'custom-logo' );
+
+	// Override parent theme settings.
+	$theme_mods = [
+		'enable_header_search'                    => false,
+		'cover_template_overlay_background_color' => '#000000',
+		'cover_template_overlay_opacity'          => 30,
+	];
+	foreach ( $theme_mods as $key => $value ) {
+		add_filter(
+			"theme_mod_{$key}",
+			function() use ( $value ) {
+				return $value;
+			}
+		);
+	}
 }
 
 /**
@@ -158,4 +180,26 @@ function filter_logo( string $html ) : string {
 	// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 	$svg_markup = file_get_contents( __DIR__ . '/assets/logo.svg' );
 	return str_replace( '></', ">$svg_markup</", $html );
+}
+
+/**
+ * Removes parent Customizer controls.
+ *
+ * @since 1.0.1
+ * @param WP_Customize_Manager $wp_customize The customizer manager instance.
+ * @return void
+ */
+function register_customizer( WP_Customize_Manager $wp_customize ) : void {
+	$controls = [
+		'retina_logo',
+		'accent_hue_active',
+		'enable_header_search',
+		'cover_template_separator_1',
+		'cover_template_overlay_background_color',
+		'cover_template_overlay_text_color',
+		'cover_template_overlay_opacity',
+	];
+	foreach ( $controls as $control ) {
+		$wp_customize->remove_control( $control );
+	}
 }
