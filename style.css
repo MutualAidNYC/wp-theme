@@ -21,7 +21,12 @@
 # Typography
 --------------------------------------------------------------*/
 
-body, .entry-content {
+body,
+.entry-content p,
+.entry-content ol,
+.entry-content ul,
+.entry-content dl,
+.entry-content dt {
 	font-family: var( --font-body );
 }
 
@@ -143,6 +148,18 @@ a {
 }
 :root .has-highlight-alt-background-color {
 	background-color: var( --color-highlight-alt );
+}
+
+/*--------------------------------------------------------------
+# Overrides
+--------------------------------------------------------------*/
+
+body {
+	background: #ffffff;
+}
+
+.airtable-embed {
+	width: 100% !important;
 }
 
 /*--------------------------------------------------------------
@@ -387,7 +404,14 @@ a {
 # These provide front-end block styles.
 --------------------------------------------------------------*/
 
-button, .button, .faux-button, .wp-block-button__link, .wp-block-file .wp-block-file__button, input[type="button"], input[type="reset"], input[type="submit"] {
+button,
+.button,
+.faux-button,
+.wp-block-button__link,
+.wp-block-file .wp-block-file__button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
 	background: var( --color-primary-text );
 	font-family: var( --font-header );
 	border-radius: 1000px;
@@ -409,13 +433,16 @@ button, .button, .faux-button, .wp-block-button__link, .wp-block-file .wp-block-
 	border-width: 4px;
 }
 .is-style-outline .wp-block-button__link.has-secondary-color {
-	border-color: var( --color-accent-border );
-}
-.is-style-outline .wp-block-button__link.has-dark-color {
-	border-color: var( --color-tertiary-border );
-}
-.is-style-outline .wp-block-button__link.has-dark-alt-color {
 	border-color: var( --color-secondary-border );
+	color: var( --color-secondary-text );
+}
+.is-style-outline .wp-block-button__link.has-tertiary-color {
+	border-color: var( --color-tertiary-border );
+	color: var( --color-tertiary-text );
+}
+.is-style-outline .wp-block-button__link.has-accent-color {
+	border-color: var( --color-accent-border );
+	color: var( --color-accent-text );
 }
 
 .wp-block-quote {
@@ -437,18 +464,18 @@ button, .button, .faux-button, .wp-block-button__link, .wp-block-file .wp-block-
 }
 
 .has-drop-cap:not(:focus)::first-letter,
-	.entry-content cite,
-	.entry-content figcaption,
-	.entry-content table,
-	.entry-content address,
-	.entry-content .wp-caption-text,
-	.entry-content .wp-block-file,
-	.entry-content .wp-block-archives,
-	.entry-content .wp-block-categories,
-	.entry-content .wp-block-latest-posts,
-	.entry-content .wp-block-latest-comments,
-	.entry-content .wp-block-cover-image p,
-	.entry-content .wp-block-pullquote {
+.entry-content cite,
+.entry-content figcaption,
+.entry-content table,
+.entry-content address,
+.entry-content .wp-caption-text,
+.entry-content .wp-block-file,
+.entry-content .wp-block-archives,
+.entry-content .wp-block-categories,
+.entry-content .wp-block-latest-posts,
+.entry-content .wp-block-latest-comments,
+.entry-content .wp-block-cover-image p,
+.entry-content .wp-block-pullquote {
 	font-family: var( --font-body );
 }
 
