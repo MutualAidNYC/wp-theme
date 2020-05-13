@@ -77,6 +77,9 @@ function setup() : void {
 		)
 	);
 
+	// Disables custom font sizes.
+	add_theme_support( 'disable-custom-font-sizes' );
+
 	// Remove theme support for items that are hard-coded.
 	remove_theme_support( 'custom-background' );
 	remove_theme_support( 'custom-logo' );
