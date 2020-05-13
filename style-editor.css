@@ -5,18 +5,6 @@
 # styles for the block editor.
 --------------------------------------------------------------*/
 
-/*
-This multiplier is to account for the changes in width between the editor and the front end.
-All sizes where it makes sense are multiplied by this value to keep things proportional.
-This is removed for 360px (the mobile view) as the editor width is equal to the viewport.
-*/
-:root {
-	--size-multiplier: calc( 580 / 700 );
-}
-:root[style*='width: 360px'] {
-	--size-multiplier: 1;
-}
-
 p,
 ol,
 ul,
@@ -60,35 +48,35 @@ h2 {
 
 h3 {
 	font-family: var( --font-compressed );
-	font-size: calc( 1em * var( --size-multiplier ) );
+	font-size: 1em;
 	color: var( --color-secondary-text );
 }
 
 h4 {
 	color: var( --color-tertiary-text );
-	font-size: calc( 1.75em * var( --size-multiplier ) );
+	font-size: 1.75em;
 	line-height: 1.4;
 }
 
 h4 > strong {
 	background-color: var( --color-highlight );
-	padding: 0 calc( 0.3em * var( --size-multiplier ) );
+	padding: 0 0.3em;
 	-webkit-box-decoration-break: clone;
 	box-decoration-break: clone;
 }
 
 .has-small-font-size {
-	font-size: calc( 18px * var( --size-multiplier ) );
+	font-size: 18px;
 }
 .has-normal-font-size,
 p:not( [class*='-font-size'] ) {
-	font-size: calc( 21px * var( --size-multiplier ) );
+	font-size: 21px;
 }
 .has-large-font-size {
-	font-size: calc( 26.25px * var( --size-multiplier ) );
+	font-size: 26.25px;
 }
 .has-larger-font-size {
-	font-size: calc( 32px * var( --size-multiplier ) );
+	font-size: 32px;
 	line-height: 1.3;
 }
 
@@ -107,7 +95,7 @@ p:not( [class*='-font-size'] ) {
 .wp-block-button .wp-block-button__link {
 	border-radius: 1000px;
 	font-family: var( --font-header );
-	font-size: calc( 17px * var( --size-multiplier ) );
+	font-size: 17px;
 	text-transform: uppercase;
 	letter-spacing: 0.0333em;
 }
@@ -128,7 +116,7 @@ p:not( [class*='-font-size'] ) {
 }
 
 .wp-block-pullquote.is-style-solid-color blockquote p {
-	font-size: calc( 1.5em * var( --size-multiplier ) );
+	font-size: 1.5em;
 }
 .wp-block-quote {
 	border-left-width: 0;
