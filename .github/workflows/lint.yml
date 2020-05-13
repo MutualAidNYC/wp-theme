@@ -1,4 +1,4 @@
-name: PHP Composer
+name: Linting
 
 on:
   push:
@@ -7,10 +7,21 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-
+  node:
     runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v2
 
+      - name: Installs dependencies
+        run: yarn install --frozen-lockfile --non-interactive
+
+      - name: Validates CSS
+        run: yarn lint:css
+
+  php:
+    runs-on: ubuntu-latest
+    continue-on-error: false
     steps:
     - uses: actions/checkout@v2
 
