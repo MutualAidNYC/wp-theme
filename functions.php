@@ -198,6 +198,7 @@ function register_customizer( WP_Customize_Manager $wp_customize ) : void {
 	$controls = [
 		'retina_logo',
 		'accent_hue_active',
+		'header_footer_background_color',
 		'enable_header_search',
 		'cover_template_separator_1',
 		'cover_template_overlay_background_color',
