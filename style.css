@@ -183,7 +183,7 @@ body {
 .home .entry-header {
 	position: absolute;
 	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
+	clip: rect( 0, 0, 0, 0 );
 	height: 1px;
 	width: 1px;
 	margin: -1px;
@@ -379,9 +379,9 @@ button,
 .faux-button,
 .wp-block-button__link,
 .wp-block-file .wp-block-file__button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"] {
+input[type='button'],
+input[type='reset'],
+input[type='submit'] {
 	background: var( --color-primary-text );
 	font-family: var( --font-header );
 	border-radius: 1000px;

@@ -13,7 +13,7 @@ This is removed for 360px (the mobile view) as the editor width is equal to the 
 :root {
 	--size-multiplier: calc( 580 / 700 );
 }
-:root[ style*='width: 360px' ] {
+:root[style*='width: 360px'] {
 	--size-multiplier: 1;
 }
 
@@ -81,7 +81,7 @@ h4 > strong {
 	font-size: calc( 18px * var( --size-multiplier ) );
 }
 .has-normal-font-size,
-p:not( [class*="-font-size"] ) {
+p:not( [class*='-font-size'] ) {
 	font-size: calc( 21px * var( --size-multiplier ) );
 }
 .has-large-font-size {
