@@ -116,41 +116,6 @@ a {
 }
 
 /*--------------------------------------------------------------
-# Utilities
---------------------------------------------------------------*/
-
-:root .has-accent-color {
-	color: var( --color-accent-text );
-}
-:root .has-accent-background-color {
-	background-color: var( --color-accent-text );
-}
-:root .has-secondary-color {
-	color: var( --color-secondary-text );
-}
-:root .has-secondary-background-color {
-	background-color: var( --color-secondary-text );
-}
-:root .has-tertiary-color {
-	color: var( --color-tertiary-text );
-}
-:root .has-tertiary-background-color {
-	background-color: var( --color-tertiary-text );
-}
-:root .has-highlight-color {
-	color: var( --color-highlight );
-}
-:root .has-highlight-background-color {
-	background-color: var( --color-highlight );
-}
-:root .has-highlight-alt-color {
-	color: var( --color-highlight-alt );
-}
-:root .has-highlight-alt-background-color {
-	background-color: var( --color-highlight-alt );
-}
-
-/*--------------------------------------------------------------
 # Overrides
 --------------------------------------------------------------*/
 
@@ -428,7 +393,7 @@ input[type="submit"] {
 	text-decoration: none;
 	opacity: 0.7;
 }
-.is-style-outline .wp-block-button__link {
+.wp-block-button.is-style-outline .wp-block-button__link {
 	border-width: 4px;
 }
 .is-style-outline .wp-block-button__link.has-secondary-color {

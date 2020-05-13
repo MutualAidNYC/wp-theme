@@ -72,6 +72,7 @@ function setup() : void {
 		array(
 			fonts_url(),
 			'assets/variables.css',
+			'assets/colors.css',
 			'style-editor.css',
 		)
 	);
@@ -110,12 +111,13 @@ function enqueue_styles() : void {
 
 	// Enqueue fonts.
 	// phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
-	wp_enqueue_style( 'theme-fonts', fonts_url(), array(), null );
+	wp_enqueue_style( 'theme-fonts', fonts_url(), [], null );
 
 	// Enqueue theme CSS variables.
-	wp_enqueue_style( 'theme-style-variables', get_stylesheet_directory_uri() . '/assets/variables.css', array(), wp_get_theme()->get( 'Version' ) );
+	wp_enqueue_style( 'theme-style-variables', get_stylesheet_directory_uri() . '/assets/variables.css', [], $theme_version );
+	wp_enqueue_style( 'theme-style-colors', get_stylesheet_directory_uri() . '/assets/colors.css', [], $theme_version );
 
-	wp_enqueue_style( 'theme-style', get_stylesheet_uri(), [ 'parent-style', 'theme-style-variables' ], $theme_version );
+	wp_enqueue_style( 'theme-style', get_stylesheet_uri(), [ 'parent-style', 'theme-style-variables', 'theme-style-colors' ], $theme_version );
 }
 
 /**
