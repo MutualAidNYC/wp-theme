@@ -132,7 +132,7 @@ if ( function_exists( 'register_block_style' ) ) {
 		'core/media-text',
 		array(
 			'name'         => 'border-alt',
-			'label'        => 'Secondary',
+			'label'        => __( 'Secondary', 'mutualaidnyc' ),
 			'style_handle' => 'theme-style',
 		)
 	);
@@ -141,7 +141,7 @@ if ( function_exists( 'register_block_style' ) ) {
 		'core/media-text',
 		array(
 			'name'         => 'border-dark',
-			'label'        => 'Tertiary',
+			'label'        => __( 'Tertiary', 'mutualaidnyc' ),
 			'style_handle' => 'theme-style',
 		)
 	);
@@ -150,7 +150,16 @@ if ( function_exists( 'register_block_style' ) ) {
 		'core/media-text',
 		array(
 			'name'         => 'border-accent',
-			'label'        => 'Accent',
+			'label'        => __( 'Accent', 'mutualaidnyc' ),
+			'style_handle' => 'theme-style',
+		)
+	);
+
+	register_block_style(
+		'core/paragraph',
+		array(
+			'name'         => 'emphasis',
+			'label'        => __( 'Emphasized', 'mutualaidnyc' ),
 			'style_handle' => 'theme-style',
 		)
 	);
