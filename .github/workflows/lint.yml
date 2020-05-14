@@ -27,7 +27,6 @@ jobs:
 
       - name: Installs dependencies
         run: yarn install --frozen-lockfile --non-interactive
-        if: ${{ steps.yarn-cache.outputs.cache-hit != 'true' }}
 
       - name: Validates CSS
         run: yarn lint:css
