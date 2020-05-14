@@ -19,6 +19,9 @@ jobs:
       - name: Validates CSS
         run: yarn lint:css
 
+      - name: Validates JS
+        run: yarn lint:js
+
   php:
     runs-on: ubuntu-latest
     continue-on-error: false
