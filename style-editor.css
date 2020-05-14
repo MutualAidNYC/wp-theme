@@ -164,6 +164,14 @@ p:not( [class*='-font-size'] ) {
 	border: 10px solid var( --color-accent-border );
 }
 
+.is-style-emphasis {
+	color: var( --color-accent-text );
+	font-family: var( --font-header );
+}
+.is-style-emphasis:not( [class*='-font-size'] ) {
+	font-size: 1.95em;
+}
+
 div[class*='is-style-border-'].wp-block-media-text {
 	margin: auto;
 	max-width: var( --default-content-width );
