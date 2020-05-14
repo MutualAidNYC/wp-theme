@@ -167,6 +167,8 @@ p:not( [class*='-font-size'] ) {
 .is-style-emphasis {
 	color: var( --color-accent-text );
 	font-family: var( --font-header );
+	font-weight: bold;
+	letter-spacing: -0.0415625em;
 }
 .is-style-emphasis:not( [class*='-font-size'] ) {
 	font-size: 1.95em;
