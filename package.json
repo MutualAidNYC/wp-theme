@@ -1,10 +1,12 @@
 {
-	"name": "mutualaid-nyc",
-	"version": "0.1.0",
-	"description": "Example block written with ESNext standard and JSX support – build step required.",
-	"author": "The WordPress Contributors",
-	"license": "GPL-2.0-or-later",
-	"main": "assets/blocks/index.js",
+	"name": "mutualaidnyc-theme",
+	"version": "1.0.1",
+	"description": "WordPress theme for Mutual Aid NYC.",
+	"main": "index.js",
+	"repository": "git@github.com:MutualAidNYC/wp-theme.git",
+	"author": "Echo G <ChaosExAnima@users.noreply.github.com>",
+	"license": "MIT",
+	"private": false,
 	"scripts": {
 		"build": "wp-scripts build ./blocks/**/index.js --output-path=assets/blocks",
 		"format:js": "wp-scripts format-js ./blocks",
