@@ -9,6 +9,13 @@ namespace MutualAidNYC;
 
 use WP_Customize_Manager;
 
+define( 'MANY_ROOT_PATH', get_stylesheet_directory() );
+define( 'MANY_ROOT_URL', get_stylesheet_directory_uri() );
+define( 'MANY_ASSETS_PATH', MANY_ROOT_PATH . '/assets' );
+define( 'MANY_ASSETS_URL', MANY_ROOT_URL . '/assets' );
+
+require_once MANY_ROOT_PATH . '/blocks/blocks.php';
+
 add_action( 'after_setup_theme', __NAMESPACE__ . '\\setup', 11 );
 
 /**
@@ -22,6 +29,7 @@ function setup() : void {
 	remove_action( 'widgets_init', 'twentytwenty_sidebar_registration' );
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_styles', 10 );
 	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_editor_styles' );
+	add_action( 'init', __NAMESPACE__ . '\\block_init' );
 
 	add_filter( 'twentytwenty_get_elements_array', '__return_empty_array' );
 	add_filter( 'theme_mod_custom_logo', '__return_true' );
@@ -143,7 +151,7 @@ if ( function_exists( 'register_block_style' ) ) {
 		'core/media-text',
 		array(
 			'name'         => 'border-alt',
-			'label'        => 'Secondary',
+			'label'        => __( 'Secondary', 'mutualaidnyc' ),
 			'style_handle' => 'theme-style',
 		)
 	);
@@ -152,7 +160,7 @@ if ( function_exists( 'register_block_style' ) ) {
 		'core/media-text',
 		array(
 			'name'         => 'border-dark',
-			'label'        => 'Tertiary',
+			'label'        => __( 'Tertiary', 'mutualaidnyc' ),
 			'style_handle' => 'theme-style',
 		)
 	);
@@ -161,7 +169,16 @@ if ( function_exists( 'register_block_style' ) ) {
 		'core/media-text',
 		array(
 			'name'         => 'border-accent',
-			'label'        => 'Accent',
+			'label'        => __( 'Accent', 'mutualaidnyc' ),
+			'style_handle' => 'theme-style',
+		)
+	);
+
+	register_block_style(
+		'core/paragraph',
+		array(
+			'name'         => 'emphasis',
+			'label'        => __( 'Emphasized', 'mutualaidnyc' ),
 			'style_handle' => 'theme-style',
 		)
 	);
