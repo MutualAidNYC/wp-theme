@@ -183,7 +183,6 @@ function fonts_url() : string {
 
 	$font_families   = array();
 	$font_families[] = 'family=Poppins:wght@700;900';
-	$font_families[] = 'family=Francois+One';
 	$font_families[] = 'family=Karla:ital,wght@0,400;0,700;1,400;1,700';
 	$font_families[] = 'display=swap';
 
