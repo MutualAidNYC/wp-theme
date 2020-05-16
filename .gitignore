@@ -5,3 +5,5 @@ twentytwenty
 /vendor/
 import.xml
 node_modules
+index.js.map
+assets/blocks
