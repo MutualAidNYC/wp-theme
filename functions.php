@@ -21,6 +21,7 @@ function setup() : void {
 	remove_action( 'enqueue_block_editor_assets', 'twentytwenty_block_editor_styles', 1 );
 	remove_action( 'widgets_init', 'twentytwenty_sidebar_registration' );
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_styles', 10 );
+	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_editor_styles' );
 
 	add_filter( 'twentytwenty_get_elements_array', '__return_empty_array' );
 	add_filter( 'theme_mod_custom_logo', '__return_true' );
@@ -99,6 +100,10 @@ function setup() : void {
 			}
 		);
 	}
+
+	$theme_version = wp_get_theme()->get( 'Version' );
+	wp_register_style( 'theme-style-variables', get_stylesheet_directory_uri() . '/assets/variables.css', [], $theme_version );
+	wp_register_style( 'theme-style-colors', get_stylesheet_directory_uri() . '/assets/colors.css', [], $theme_version );
 }
 
 /**
@@ -117,11 +122,17 @@ function enqueue_styles() : void {
 	// phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 	wp_enqueue_style( 'theme-fonts', fonts_url(), [], null );
 
-	// Enqueue theme CSS variables.
-	wp_enqueue_style( 'theme-style-variables', get_stylesheet_directory_uri() . '/assets/variables.css', [], $theme_version );
-	wp_enqueue_style( 'theme-style-colors', get_stylesheet_directory_uri() . '/assets/colors.css', [], $theme_version );
-
 	wp_enqueue_style( 'theme-style', get_stylesheet_uri(), [ 'parent-style', 'theme-style-variables', 'theme-style-colors' ], $theme_version );
+}
+
+/**
+ * Enqueues styles for the block editor.
+ *
+ * @since 1.0.1
+ * @return void
+ */
+function enqueue_editor_styles() : void {
+	wp_enqueue_style( 'theme-editor-tweaks', get_stylesheet_directory_uri() . '/assets/editor-tweaks.css', [ 'theme-style-variables' ], wp_get_theme()->get( 'Version' ) );
 }
 
 /**
