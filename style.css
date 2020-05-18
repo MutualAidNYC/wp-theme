@@ -171,8 +171,7 @@ body {
 
 .cover-header .cover-header-inner-wrapper {
 	justify-content: center;
-	min-height: auto;
-	height: 320px;
+	min-height: 320px;
 	max-height: 100vh;
 }
 
@@ -192,7 +191,7 @@ body {
 }
 
 .cover-header-inner {
-	padding: 0;
+	padding: 15rem 0;
 }
 
 .cover-header .entry-header .entry-title {
