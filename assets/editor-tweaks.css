@@ -1,0 +1,9 @@
+.block-editor-color-gradient-control ~ .block-editor-color-gradient-control .component-color-indicator[aria-label='(Color: #a4cacb)'],
+.component-color-indicator[aria-label='(background color: color Alternative Highlight Background)'] {
+	background-color: var( --color-highlight-alt-border ) !important;
+}
+
+.block-editor-color-gradient-control ~ .block-editor-color-gradient-control button[aria-label='Color: Alternative Highlight Background'] {
+	color: var( --color-highlight-alt-border ) !important;
+	background-color: var( --color-highlight-alt-border ) !important;
+}
