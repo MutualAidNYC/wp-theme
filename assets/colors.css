@@ -29,8 +29,8 @@
 	background-color: var( --color-highlight );
 }
 :root .has-highlight-alt-color {
-	color: var( --color-highlight-alt );
+	color: var( --color-highlight-alt-text );
 }
 :root .has-highlight-alt-background-color {
-	background-color: var( --color-highlight-alt );
+	background-color: var( --color-highlight-alt-border );
 }

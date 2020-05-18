@@ -7,7 +7,8 @@
 	--color-tertiary-text: #47133d;
 	--color-tertiary-border: #a17193;
 	--color-highlight: #f7cf56;
-	--color-highlight-alt: #a4cacb;
+	--color-highlight-alt-text: #a4cacb;
+	--color-highlight-alt-border: #ebf3f3;
 
 	--font-header: 'Poppins', sans-serif;
 	--font-body: 'Karla', sans-serif;
