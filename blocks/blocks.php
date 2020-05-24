@@ -22,11 +22,6 @@ function block_init() {
 	}
 	$script_asset_path = MANY_ASSETS_PATH . '/blocks/index.asset.php';
 	if ( ! file_exists( $script_asset_path ) ) {
-		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error
-		trigger_error(
-			'You need to run `npm start` or `npm run build` first.',
-			E_USER_WARNING
-		);
 		return;
 	}
 	$script_asset = require MANY_ASSETS_PATH . '/blocks/index.asset.php';
