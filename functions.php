@@ -34,6 +34,7 @@ function setup() : void {
 	add_filter( 'twentytwenty_get_elements_array', '__return_empty_array' );
 	add_filter( 'theme_mod_custom_logo', '__return_true' );
 	add_filter( 'get_custom_logo', __NAMESPACE__ . '\\filter_logo' );
+	add_action( 'customize_controls_enqueue_scripts', __NAMESPACE__ . '\\remove_customizer_scripts', 11 );
 	add_action( 'customize_register', __NAMESPACE__ . '\\register_customizer', 11 );
 
 	global $content_width;
@@ -213,6 +214,17 @@ function filter_logo( string $html ) : string {
 	// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 	$svg_markup = file_get_contents( __DIR__ . '/assets/logo.svg' );
 	return str_replace( '></', ">$svg_markup</", $html );
+}
+
+/**
+ * Dequeues parent theme Customizer scripts.
+ *
+ * @return void
+ */
+function remove_customizer_scripts() : void {
+	wp_dequeue_script( 'twentytwenty-customize' );
+	wp_dequeue_script( 'twentytwenty-color-calculations' );
+	wp_dequeue_script( 'twentytwenty-customize-controls' );
 }
 
 /**
