@@ -27,7 +27,8 @@ function setup() : void {
 	remove_action( 'wp_enqueue_scripts', 'twentytwenty_register_styles' );
 	remove_action( 'enqueue_block_editor_assets', 'twentytwenty_block_editor_styles', 1 );
 	remove_action( 'widgets_init', 'twentytwenty_sidebar_registration' );
-	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_styles', 10 );
+	add_action( 'enqueue_block_assets', __NAMESPACE__ . '\\enqueue_block_styles' );
+	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_styles' );
 	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_editor_styles' );
 	add_action( 'init', __NAMESPACE__ . '\\block_init' );
 
@@ -109,7 +110,14 @@ function setup() : void {
 			}
 		);
 	}
+}
 
+/**
+ * Enqueues block styles for both the front-end and editor.
+ *
+ * @return void
+ */
+function enqueue_block_styles() : void {
 	$theme_version = wp_get_theme()->get( 'Version' );
 	wp_register_style( 'theme-style-variables', get_stylesheet_directory_uri() . '/assets/variables.css', [], $theme_version );
 	wp_register_style( 'theme-style-colors', get_stylesheet_directory_uri() . '/assets/colors.css', [], $theme_version );
