@@ -262,13 +262,13 @@ function register_customizer( WP_Customize_Manager $wp_customize ) : void {
 	/**
 	 * Removes Jetpack from TranslatePress translation options.
 	 *
-	 * @param bool   $return
-	 * @param string $translation
-	 * @param string $text
-	 * @param string $domain
+	 * @param bool   $return      What the filter is returning.
+	 * @param string $translation Unused.
+	 * @param string $text        Unused.
+	 * @param string $domain      The domain of the gettext.
 	 * @return bool
 	 */
-	function skip_jetpack_translation( $return, $translation, $text, string $domain ) {
+	function skip_jetpack_translation( bool $return, $translation, $text, string $domain ) : bool {
 		if ( 'jetpack' === $domain ) {
 			return true;
 		}
