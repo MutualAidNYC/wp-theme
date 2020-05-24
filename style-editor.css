@@ -173,7 +173,7 @@ p:not( [class*='-font-size'] ) {
 	letter-spacing: -0.0415625em;
 }
 .is-style-emphasis:not( [class*='-font-size'] ) {
-	font-size: 1.95em;
+	font-size: 1.2em;
 }
 
 div[class*='is-style-border-'].wp-block-media-text {
