@@ -6,13 +6,15 @@
  * @package mutualaidnyc
  */
 
-namespace MutualAidNYC;
+namespace MutualAidNYC\Blocks;
+
+const BLOCKS = [ 'resources' ];
+const ADD_BLOCK_HOOK = 'mutualaidnyc_add_block';
 
 /**
  * Registers all block assets so that they can be enqueued through Gutenberg in
  * the corresponding context.
  *
- * @throws Error When file is missing.
  * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/tutorials/block-tutorial/applying-styles-with-stylesheets/
  */
 function block_init() {
@@ -27,4 +29,19 @@ function block_init() {
 	$script_asset = require MANY_ASSETS_PATH . '/blocks/index.asset.php';
 	$index_js     = MANY_ASSETS_URL . '/blocks/index.js';
 	$block_paths  = MANY_ROOT_PATH . '/blocks';
+
+	wp_register_script(
+		'theme-blocks-editor',
+		$index_js,
+		$script_asset['dependencies'],
+		$script_asset['version'],
+		true
+	);
+
+	foreach ( BLOCKS as $block ) {
+		if ( file_exists( "$block_paths/$block/block.php" ) ) {
+			require_once "$block_paths/$block/block.php";
+		}
+	}
+	do_action( ADD_BLOCK_HOOK );
 }

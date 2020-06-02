@@ -30,7 +30,7 @@ function setup() : void {
 	add_action( 'enqueue_block_assets', __NAMESPACE__ . '\\enqueue_block_styles' );
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_styles' );
 	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_editor_styles' );
-	add_action( 'init', __NAMESPACE__ . '\\block_init' );
+	add_action( 'init', __NAMESPACE__ . '\\Blocks\\block_init' );
 
 	add_filter( 'twentytwenty_get_elements_array', '__return_empty_array' );
 	add_filter( 'theme_mod_custom_logo', '__return_true' );
@@ -121,6 +121,8 @@ function enqueue_block_styles() : void {
 	$theme_version = wp_get_theme()->get( 'Version' );
 	wp_register_style( 'theme-style-variables', get_stylesheet_directory_uri() . '/assets/variables.css', [], $theme_version );
 	wp_register_style( 'theme-style-colors', get_stylesheet_directory_uri() . '/assets/colors.css', [], $theme_version );
+
+	wp_enqueue_script( 'theme-blocks-editor' );
 }
 
 /**
@@ -194,18 +196,6 @@ if ( function_exists( 'register_block_style' ) ) {
 }
 
 /**
- * Registers block types.
- */
-if ( function_exists( 'register_block_type' ) ) {
-	register_block_type(
-		'mutualaidnyc/resources',
-		array(
-			'render_callback' => __NAMESPACE__ . '\\render_block_resources',
-		)
-	);
-}
-
-/**
  * Add Google webfonts
  *
  * @return string
@@ -268,41 +258,4 @@ function register_customizer( WP_Customize_Manager $wp_customize ) : void {
 	foreach ( $controls as $control ) {
 		$wp_customize->remove_control( $control );
 	}
-}
-
-/**
- * Render callback for Resources Block.
- *
- * @since 1.0.1
- * @return void
- */
-function render_block_resources() : void {
-	if ( ! class_exists( 'AirpressQuery' ) ) {
-		return;
-	}
-
-	$needs_query = new \AirpressQuery( 'Ref - Need', 0 );
-	$needs_query->addFilter( 'NOT({Resources} = BLANK())' );
-	$needs_query->addFilter( 'NOT({Need} = "-Not Listed")' );
-	$needs_query->sort( 'Need' );
-
-	$resources_query = new \AirpressQuery( 'Resources', 0 );
-	$resources_query->addFilter( '{Publish Status of Resource} = "Published"' );
-
-	$needs = new \AirpressCollection( $needs_query );
-	$needs->populateRelatedField( 'Resources', $resources_query );
-
-	echo '<ul>';
-	foreach ( $needs as $need ) {
-		printf( '<li>%s <ul>', esc_html( $need['Need'] ) );
-		foreach ( $need['Resources'] as $resource ) {
-			printf(
-				'<li><a href="%2$s">%1$s</a></li>',
-				esc_html( $resource['Resource Title'] ),
-				esc_url( $resource['Link to Resource'] ?? '' ),
-			);
-		}
-		echo '</ul></li>';
-	}
-	echo '</ul>';
 }
