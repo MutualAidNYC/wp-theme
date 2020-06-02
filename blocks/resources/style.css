@@ -28,6 +28,9 @@
 	height: 30px;
 	margin: auto 0;
 }
+.resources__need[open] > summary::after {
+	content: '\25B2';
+}
 .resources__item {
 	margin: 4rem 10px;
 }
