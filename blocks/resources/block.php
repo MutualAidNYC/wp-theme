@@ -53,23 +53,32 @@ function render_callback( array $attributes ) : string {
 	$needs->populateRelatedField( 'Resources', $resources_query );
 
 	$html = sprintf(
-		'<div class="%s">',
+		'<div class="wp-block-resources %s">',
 		esc_attr( $attributes['className'] ?? '' )
 	);
 
-	$html .= '<ul>';
 	foreach ( $needs as $need ) {
-		$html .= sprintf( '<li>%s <ul>', esc_html( $need['Need'] ) );
+		$html .= '<details class="resources__need">';
+		$html .= sprintf( '<summary class="resources__need-title">%s</summary>', esc_html( $need['Need'] ) );
+		$html .= '<div class="resources__item-wrapper">';
 		foreach ( $need['Resources'] as $resource ) {
 			$html .= sprintf(
-				'<li><a href="%2$s">%1$s</a></li>',
+				'<div class="resources__item">
+					<span class="resources__tag resources__tag--%5$s">%4$s</span>
+					<p class="resources__item-title">%1$s</p>
+					%2$s
+					<p><a href="%3$s" class="resources__item-link">%3$s</a></p>
+				</div>',
 				esc_html( $resource['Resource Title'] ),
+				wp_kses_post( wpautop( wptexturize( $resource['Resource Details'] ) ) ),
 				esc_url( $resource['Link to Resource'] ?? '' ),
+				esc_html( $resource['Resource Type'] ),
+				esc_attr( strtolower( $resource['Resource Type'] ) )
 			);
 		}
-		$html .= '</ul></li>';
+		$html .= '</div>';
+		$html .= '</details>';
 	}
-	$html .= '</ul>';
 	$html .= '</div>';
 
 	return $html;
