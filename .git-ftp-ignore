@@ -1,3 +1,11 @@
-.*
+.editorconfig
+.git*
+.nvmrc
+.phpcs.xml.dist
+.stylelintrc
 *.md
+package.json
+composer.*
 vendor/
+node_modules/
+yarn.lock
