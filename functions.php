@@ -38,6 +38,8 @@ function setup() : void {
 	add_action( 'customize_controls_enqueue_scripts', __NAMESPACE__ . '\\remove_customizer_scripts', 11 );
 	add_action( 'customize_register', __NAMESPACE__ . '\\register_customizer', 11 );
 
+	add_filter( 'trp_skip_gettext_processing', __NAMESPACE__ . '\\skip_jetpack_translation', 10, 4 );
+
 	global $content_width;
 	$content_width = 700;
 
@@ -258,4 +260,20 @@ function register_customizer( WP_Customize_Manager $wp_customize ) : void {
 	foreach ( $controls as $control ) {
 		$wp_customize->remove_control( $control );
 	}
+}
+
+/**
+ * Removes Jetpack from TranslatePress translation options.
+ *
+ * @param bool   $return      What the filter is returning.
+ * @param string $translation Unused.
+ * @param string $text        Unused.
+ * @param string $domain      The domain of the gettext.
+ * @return mixed
+ */
+function skip_jetpack_translation( $return, $translation, $text, string $domain ) {
+	if ( 'jetpack' === $domain ) {
+		return true;
+	}
+	return $return;
 }
