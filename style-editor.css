@@ -194,17 +194,13 @@ div[class*='is-style-border-'].wp-block-media-text .wp-block-media-text__media >
 	position: relative;
 }
 .wp-block-coblocks-accordion-item::after {
-	content: '\FF0B';
+	content: '\25BC';
 	right: 10px;
 	font-size: 30px;
 	line-height: 51px;
 	font-family: monospace;
 	position: absolute;
 	top: 0;
-	opacity: 0.5;
-}
-.wp-block-coblocks-accordion-item--open::after {
-	content: '\FF0D';
 }
 .wp-block-coblocks-accordion-item__title {
 	font-family: var( --font-header );

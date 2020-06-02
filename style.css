@@ -501,13 +501,13 @@ div[class*='is-style-border-'] > .wp-block-media-text__content {
 	display: none;
 }
 .wp-block-coblocks-accordion-item__title::after {
-	content: '\FF0B';
+	content: '\25BC';
 	right: 10px;
 	left: auto;
 	font-size: 30px;
 	line-height: 51px;
 	font-family: monospace;
-	color: var( --color-highlight-alt-text );
+	color: var( --color-secondary-text );
 }
 .wp-block-coblocks-accordion-item__title.has-background::after {
 	opacity: 0.5;
