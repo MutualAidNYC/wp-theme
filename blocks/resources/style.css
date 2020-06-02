@@ -45,6 +45,7 @@
 }
 .resources__tag--info {
 	background-color: var( --color-highlight );
+	color: var( --color-primary-text );
 }
 .resources__tag--fund {
 	background-color: var( --color-secondary-text );
