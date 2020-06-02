@@ -1,16 +1,25 @@
 {
-  "name": "mutualaidnyc-theme",
-  "version": "1.0.1",
-  "description": "WordPress theme for Mutual Aid NYC.",
-  "main": "index.js",
-  "repository": "git@github.com:MutualAidNYC/wp-theme.git",
-  "author": "Echo G <ChaosExAnima@users.noreply.github.com>",
-  "license": "MIT",
-  "private": false,
-  "scripts": {
-	  "lint:css": "stylelint *.css assets/*.css"
-  },
-  "devDependencies": {
-    "stylelint": "^13.3.3"
-  }
+	"name": "mutualaidnyc-theme",
+	"version": "1.0.1",
+	"description": "WordPress theme for Mutual Aid NYC.",
+	"main": "index.js",
+	"repository": "git@github.com:MutualAidNYC/wp-theme.git",
+	"author": "Echo G <ChaosExAnima@users.noreply.github.com>",
+	"license": "MIT",
+	"private": false,
+	"scripts": {
+		"build": "wp-scripts build ./blocks/**/index.js --output-path=assets/blocks",
+		"format:js": "wp-scripts format-js ./blocks",
+		"lint:css": "wp-scripts lint-style ./blocks ./assets",
+		"lint:js": "wp-scripts lint-js ./blocks",
+		"start": "wp-scripts start ./blocks/**/index.js --output-path=assets/blocks",
+		"packages-update": "wp-scripts packages-update"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^8.0.1"
+	},
+	"dependencies": {
+		"classnames": "^2.2.6",
+		"lodash": "^4.17.15"
+	}
 }

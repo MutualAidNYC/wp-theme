@@ -9,6 +9,13 @@ namespace MutualAidNYC;
 
 use WP_Customize_Manager;
 
+define( 'MANY_ROOT_PATH', get_stylesheet_directory() );
+define( 'MANY_ROOT_URL', get_stylesheet_directory_uri() );
+define( 'MANY_ASSETS_PATH', MANY_ROOT_PATH . '/assets' );
+define( 'MANY_ASSETS_URL', MANY_ROOT_URL . '/assets' );
+
+require_once MANY_ROOT_PATH . '/blocks/blocks.php';
+
 add_action( 'after_setup_theme', __NAMESPACE__ . '\\setup', 11 );
 
 /**
@@ -20,11 +27,15 @@ function setup() : void {
 	remove_action( 'wp_enqueue_scripts', 'twentytwenty_register_styles' );
 	remove_action( 'enqueue_block_editor_assets', 'twentytwenty_block_editor_styles', 1 );
 	remove_action( 'widgets_init', 'twentytwenty_sidebar_registration' );
-	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_styles', 10 );
+	add_action( 'enqueue_block_assets', __NAMESPACE__ . '\\enqueue_block_styles' );
+	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_styles' );
+	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_editor_styles' );
+	add_action( 'init', __NAMESPACE__ . '\\block_init' );
 
 	add_filter( 'twentytwenty_get_elements_array', '__return_empty_array' );
 	add_filter( 'theme_mod_custom_logo', '__return_true' );
 	add_filter( 'get_custom_logo', __NAMESPACE__ . '\\filter_logo' );
+	add_action( 'customize_controls_enqueue_scripts', __NAMESPACE__ . '\\remove_customizer_scripts', 11 );
 	add_action( 'customize_register', __NAMESPACE__ . '\\register_customizer', 11 );
 
 	global $content_width;
@@ -102,6 +113,17 @@ function setup() : void {
 }
 
 /**
+ * Enqueues block styles for both the front-end and editor.
+ *
+ * @return void
+ */
+function enqueue_block_styles() : void {
+	$theme_version = wp_get_theme()->get( 'Version' );
+	wp_register_style( 'theme-style-variables', get_stylesheet_directory_uri() . '/assets/variables.css', [], $theme_version );
+	wp_register_style( 'theme-style-colors', get_stylesheet_directory_uri() . '/assets/colors.css', [], $theme_version );
+}
+
+/**
  * Enqueues the theme styles.
  *
  * @return void
@@ -117,11 +139,17 @@ function enqueue_styles() : void {
 	// phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 	wp_enqueue_style( 'theme-fonts', fonts_url(), [], null );
 
-	// Enqueue theme CSS variables.
-	wp_enqueue_style( 'theme-style-variables', get_stylesheet_directory_uri() . '/assets/variables.css', [], $theme_version );
-	wp_enqueue_style( 'theme-style-colors', get_stylesheet_directory_uri() . '/assets/colors.css', [], $theme_version );
-
 	wp_enqueue_style( 'theme-style', get_stylesheet_uri(), [ 'parent-style', 'theme-style-variables', 'theme-style-colors' ], $theme_version );
+}
+
+/**
+ * Enqueues styles for the block editor.
+ *
+ * @since 1.0.1
+ * @return void
+ */
+function enqueue_editor_styles() : void {
+	wp_enqueue_style( 'theme-editor-tweaks', get_stylesheet_directory_uri() . '/assets/editor-tweaks.css', [ 'theme-style-variables' ], wp_get_theme()->get( 'Version' ) );
 }
 
 /**
@@ -132,7 +160,7 @@ if ( function_exists( 'register_block_style' ) ) {
 		'core/media-text',
 		array(
 			'name'         => 'border-alt',
-			'label'        => 'Secondary',
+			'label'        => __( 'Secondary', 'mutualaidnyc' ),
 			'style_handle' => 'theme-style',
 		)
 	);
@@ -141,7 +169,7 @@ if ( function_exists( 'register_block_style' ) ) {
 		'core/media-text',
 		array(
 			'name'         => 'border-dark',
-			'label'        => 'Tertiary',
+			'label'        => __( 'Tertiary', 'mutualaidnyc' ),
 			'style_handle' => 'theme-style',
 		)
 	);
@@ -150,7 +178,16 @@ if ( function_exists( 'register_block_style' ) ) {
 		'core/media-text',
 		array(
 			'name'         => 'border-accent',
-			'label'        => 'Accent',
+			'label'        => __( 'Accent', 'mutualaidnyc' ),
+			'style_handle' => 'theme-style',
+		)
+	);
+
+	register_block_style(
+		'core/paragraph',
+		array(
+			'name'         => 'emphasis',
+			'label'        => __( 'Emphasized', 'mutualaidnyc' ),
 			'style_handle' => 'theme-style',
 		)
 	);
@@ -178,7 +215,6 @@ function fonts_url() : string {
 
 	$font_families   = array();
 	$font_families[] = 'family=Poppins:wght@700;900';
-	$font_families[] = 'family=Francois+One';
 	$font_families[] = 'family=Karla:ital,wght@0,400;0,700;1,400;1,700';
 	$font_families[] = 'display=swap';
 
@@ -198,6 +234,17 @@ function filter_logo( string $html ) : string {
 	// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 	$svg_markup = file_get_contents( __DIR__ . '/assets/logo.svg' );
 	return str_replace( '></', ">$svg_markup</", $html );
+}
+
+/**
+ * Dequeues parent theme Customizer scripts.
+ *
+ * @return void
+ */
+function remove_customizer_scripts() : void {
+	wp_dequeue_script( 'twentytwenty-customize' );
+	wp_dequeue_script( 'twentytwenty-color-calculations' );
+	wp_dequeue_script( 'twentytwenty-customize-controls' );
 }
 
 /**
