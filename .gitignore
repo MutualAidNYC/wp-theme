@@ -2,6 +2,7 @@
 wordpress
 *.code-workspace
 twentytwenty
+airpress
 /vendor/
 import.xml
 node_modules

@@ -30,7 +30,7 @@ function setup() : void {
 	add_action( 'enqueue_block_assets', __NAMESPACE__ . '\\enqueue_block_styles' );
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_styles' );
 	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_editor_styles' );
-	add_action( 'init', __NAMESPACE__ . '\\block_init' );
+	add_action( 'init', __NAMESPACE__ . '\\Blocks\\block_init' );
 
 	add_filter( 'twentytwenty_get_elements_array', '__return_empty_array' );
 	add_filter( 'theme_mod_custom_logo', '__return_true' );
@@ -121,6 +121,8 @@ function enqueue_block_styles() : void {
 	$theme_version = wp_get_theme()->get( 'Version' );
 	wp_register_style( 'theme-style-variables', get_stylesheet_directory_uri() . '/assets/variables.css', [], $theme_version );
 	wp_register_style( 'theme-style-colors', get_stylesheet_directory_uri() . '/assets/colors.css', [], $theme_version );
+
+	wp_enqueue_script( 'theme-blocks-editor' );
 }
 
 /**
