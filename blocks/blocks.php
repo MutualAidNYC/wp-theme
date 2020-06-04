@@ -27,15 +27,21 @@ function block_init() {
 		return;
 	}
 	$script_asset = require MANY_ASSETS_PATH . '/blocks/index.asset.php';
-	$index_js     = MANY_ASSETS_URL . '/blocks/index.js';
 	$block_paths  = MANY_ROOT_PATH . '/blocks';
 
 	wp_register_script(
 		'theme-blocks-editor',
-		$index_js,
+		MANY_ASSETS_URL . '/blocks/index.js',
 		$script_asset['dependencies'],
 		$script_asset['version'],
 		true
+	);
+	wp_register_style(
+		'theme-blocks-styles',
+		// Should be set to common URL once fixed: https://github.com/WordPress/gutenberg/issues/22776.
+		MANY_ROOT_URL . '/blocks/resources/style.css',
+		[],
+		$script_asset['version']
 	);
 
 	foreach ( BLOCKS as $block ) {

@@ -1,0 +1,64 @@
+.resources__need {
+	margin-bottom: 1em;
+}
+.resources__need-title {
+	padding: 10px 15px;
+	position: relative;
+	font-family: var( --font-header );
+	font-weight: 700;
+	list-style: none;
+	color: var( --color-secondary-text );
+	cursor: pointer;
+	background-color: var( --color-highlight-alt-border );
+}
+.resources__need-title::-webkit-details-marker {
+	display: none;
+}
+.resources__need-title::after {
+	content: '\25BC';
+	right: 10px;
+	left: auto;
+	font-size: 30px;
+	font-family: monospace;
+	color: var( --color-secondary-text );
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	line-height: 1;
+	height: 30px;
+	margin: auto 0;
+}
+.resources__need[open] > summary::after {
+	content: '\25B2';
+}
+.resources__item {
+	margin: 4rem 10px;
+}
+.resources__tag {
+	display: inline-block;
+	font-family: var( --font-header );
+	font-size: 0.8em;
+	color: #fff;
+	padding: 0.5rem 1rem;
+	background-color: var( --color-primary-text );
+	text-transform: uppercase;
+}
+.resources__tag--service {
+	background-color: var( --color-tertiary-text );
+}
+.resources__tag--info {
+	background-color: var( --color-highlight );
+	color: var( --color-primary-text );
+}
+.resources__tag--fund {
+	background-color: var( --color-secondary-text );
+}
+.resources__tag--course {
+	background-color: var( --color-accent-text );
+}
+p.resources__item-title {
+	font-size: 1.2em;
+	font-family: var( --font-header );
+	font-weight: bold;
+	margin: 1rem 0;
+}
