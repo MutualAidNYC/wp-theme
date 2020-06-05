@@ -1,5 +1,6 @@
 .resources__need {
 	margin-bottom: 1em;
+	user-select: none;
 }
 .resources__need-title {
 	padding: 10px 15px;
@@ -15,24 +16,30 @@
 	display: none;
 }
 .resources__need-title::after {
-	content: '\25BC';
 	right: 10px;
 	left: auto;
-	font-size: 30px;
-	font-family: monospace;
-	color: var( --color-secondary-text );
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	line-height: 1;
-	height: 30px;
 	margin: auto 0;
+	content: '\f140';
+	font-family: dashicons;
+	line-height: 1;
+	font-size: 50px;
+	font-weight: 400;
+	transition: none;
+	vertical-align: top;
+	text-align: center;
+	height: 50px;
 }
 .resources__need[open] > summary::after {
-	content: '\25B2';
+	content: '\f142';
 }
 .resources__item {
 	margin: 4rem 10px;
+}
+.resources__item > *:not( .resources__tag ) {
+	user-select: text;
 }
 .resources__tag {
 	display: inline-block;
