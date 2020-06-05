@@ -193,14 +193,24 @@ div[class*='is-style-border-'].wp-block-media-text .wp-block-media-text__media >
 .wp-block-coblocks-accordion-item {
 	position: relative;
 }
-.wp-block-coblocks-accordion-item::after {
-	content: '\25BC';
+.wp-block-coblocks-accordion-item__title::after {
+	content: '\f140';
+	font-family: dashicons;
+	line-height: 1;
 	right: 10px;
-	font-size: 30px;
-	line-height: 51px;
-	font-family: monospace;
+	font-size: 50px;
+	font-weight: 400;
+	left: auto;
+	margin: auto 0;
+	transition: none;
+	text-align: center;
+	height: 50px;
+	background: none !important; /* Override parent hover color. */
 	position: absolute;
-	top: 0;
+	display: block;
+}
+.wp-block-coblocks-accordion-item--open > .wp-block-coblocks-accordion-item__title::after {
+	content: '\f142';
 }
 .wp-block-coblocks-accordion-item__title {
 	font-family: var( --font-header );

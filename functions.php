@@ -144,7 +144,7 @@ function enqueue_styles() : void {
 	wp_enqueue_style(
 		'theme-style',
 		MANY_ROOT_URL . '/style.css',
-		[ 'parent-style', 'theme-style-variables', 'theme-style-colors', 'theme-blocks-styles' ],
+		[ 'parent-style', 'theme-style-variables', 'theme-style-colors', 'theme-blocks-styles', 'dashicons' ],
 		$theme_version
 	);
 }
