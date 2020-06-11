@@ -1,8 +1,7 @@
 .vscode
 wordpress
 *.code-workspace
-twentytwenty
-airpress
+stubs
 /vendor/
 import.xml
 node_modules
