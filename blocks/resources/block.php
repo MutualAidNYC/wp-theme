@@ -61,7 +61,7 @@ function render_callback( array $attributes ) : string {
 	$markdown_parser = null;
 	if ( function_exists( 'jetpack_require_lib' ) ) {
 		jetpack_require_lib( 'markdown' );
-		$markdown_parser = new WPCom_GHF_Markdown_Parser;
+		$markdown_parser = new WPCom_GHF_Markdown_Parser();
 	}
 
 	foreach ( $needs as $need ) {
