@@ -246,7 +246,7 @@ function filter_logo( string $html ) : string {
  */
 function filter_body_class( array $classes ) : array {
 	if (
-		is_page() && 
+		is_page() &&
 		( ! is_page_template() || is_page_template( 'templates/template-sidebar.php' ) )
 	) {
 		$classes[] = 'overlay-header';
