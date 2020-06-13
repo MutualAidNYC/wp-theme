@@ -17,7 +17,7 @@ get_header();
 		the_post();
 		?>
 		<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
-			<?php get_template_part( 'template-parts/header-cover.php' ); ?>
+			<?php get_template_part( 'template-parts/header-cover' ); ?>
 
 			<div class="post-inner" id="post-inner">
 
