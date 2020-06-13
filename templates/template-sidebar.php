@@ -28,9 +28,9 @@ get_header();
 					<?php edit_post_link(); ?>
 				</div>
 
-				<div class="page-sidebar">
+				<aside class="page-sidebar">
 					<?php dynamic_sidebar( 'page-sidebar' ); ?>
-				</div>
+				</aside>
 			</div>
 		</article><!-- .post -->
 		<?php
