@@ -37,6 +37,7 @@ function setup() : void {
 	add_filter( 'get_custom_logo', __NAMESPACE__ . '\\filter_logo' );
 	add_action( 'customize_controls_enqueue_scripts', __NAMESPACE__ . '\\remove_customizer_scripts', 11 );
 	add_action( 'customize_register', __NAMESPACE__ . '\\register_customizer', 11 );
+	add_filter( 'body_class', __NAMESPACE__ . '\\filter_body_class' );
 
 	add_filter( 'trp_skip_gettext_processing', __NAMESPACE__ . '\\skip_jetpack_translation', 10, 4 );
 
@@ -235,6 +236,22 @@ function filter_logo( string $html ) : string {
 	// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 	$svg_markup = file_get_contents( __DIR__ . '/assets/logo.svg' );
 	return str_replace( '></', ">$svg_markup</", $html );
+}
+
+/**
+ * Adds overlay header to pages with no template.
+ *
+ * @param array $classes Array of classes on the body tag.
+ * @return array
+ */
+function filter_body_class( array $classes ) : array {
+	if (
+		is_page() && 
+		( ! is_page_template() || is_page_template( 'templates/template-sidebar.php' ) )
+	) {
+		$classes[] = 'overlay-header';
+	}
+	return $classes;
 }
 
 /**

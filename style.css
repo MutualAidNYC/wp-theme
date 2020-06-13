@@ -162,7 +162,7 @@ body {
 	display: none;
 }
 
-.page-template-default #site-header,
+.page-template #site-header,
 .cover-header {
 	background-color: var( --color-secondary-text );
 }
@@ -201,8 +201,9 @@ body {
 	top: calc( 100% + 8rem );
 }
 
-.template-cover .entry-content {
-	margin-top: 2em;
+.page-template .entry-header {
+	background: transparent;
+	padding: 0;
 }
 
 .sub-menu .current-menu-item:hover {
