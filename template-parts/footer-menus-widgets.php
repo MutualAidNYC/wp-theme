@@ -4,7 +4,7 @@
  * Visually, this output is presented as part of the footer element.
  *
  * @package WordPress
- * @subpackage Twenty_Twenty
+ * @subpackage MutualAidNYC
  * @since 1.0.0
  */
 
@@ -31,7 +31,7 @@ if ( $has_footer_menu || $has_social_menu ) {
 				<div class="footer-top<?php echo $footer_top_classes; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output ?>">
 					<?php if ( $has_footer_menu ) { ?>
 
-						<nav aria-label="<?php esc_attr_e( 'Footer', 'twentytwenty' ); ?>" role="navigation" class="footer-menu-wrapper">
+						<nav aria-label="<?php esc_attr_e( 'Footer', 'mutualaidnyc' ); ?>" role="navigation" class="footer-menu-wrapper">
 
 							<ul class="footer-menu reset-list-style">
 								<?php
@@ -51,7 +51,7 @@ if ( $has_footer_menu || $has_social_menu ) {
 					<?php } ?>
 					<?php if ( $has_social_menu ) { ?>
 
-						<nav aria-label="<?php esc_attr_e( 'Social links', 'twentytwenty' ); ?>" class="footer-social-wrapper">
+						<nav aria-label="<?php esc_attr_e( 'Social links', 'mutualaidnyc' ); ?>" class="footer-social-wrapper">
 
 							<ul class="social-menu footer-social reset-list-style social-icons fill-children-current-color">
 

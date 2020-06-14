@@ -8,7 +8,7 @@
 
 namespace MutualAidNYC\Blocks;
 
-const BLOCKS = [ 'resources' ];
+const BLOCKS         = [ 'resources' ];
 const ADD_BLOCK_HOOK = 'mutualaidnyc_add_block';
 
 /**
