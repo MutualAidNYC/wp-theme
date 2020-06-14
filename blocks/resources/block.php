@@ -10,6 +10,7 @@ namespace MutualAidNYC\Blocks\Resources;
 use const MutualAidNYC\Blocks\ADD_BLOCK_HOOK;
 use AirpressQuery;
 use AirpressCollection;
+use WPCom_GHF_Markdown_Parser;
 
 add_action( ADD_BLOCK_HOOK, __NAMESPACE__ . '\\block_init' );
 
@@ -57,7 +58,16 @@ function render_callback( array $attributes ) : string {
 		esc_attr( $attributes['className'] ?? '' )
 	);
 
+	$markdown_parser = null;
+	if ( function_exists( 'jetpack_require_lib' ) ) {
+		jetpack_require_lib( 'markdown' );
+		$markdown_parser = new WPCom_GHF_Markdown_Parser();
+	}
+
 	foreach ( $needs as $need ) {
+		if ( count( $need['Resources'] ) === 0 ) {
+			continue;
+		}
 		$html .= '<details class="resources__need">';
 		$html .= sprintf( '<summary class="resources__need-title">%s</summary>', esc_html( $need['Need'] ) );
 		$html .= '<div class="resources__item-wrapper">';
@@ -70,10 +80,10 @@ function render_callback( array $attributes ) : string {
 					<p><a href="%3$s" class="resources__item-link">%3$s</a></p>
 				</div>',
 				esc_html( $resource['Resource Title'] ),
-				wp_kses_post( wpautop( wptexturize( $resource['Resource Details'] ) ) ),
+				wp_kses_post( markdown_to_html( $resource['Resource Details'], $markdown_parser ) ),
 				esc_url( $resource['Link to Resource'] ?? '' ),
-				esc_html( $resource['Resource Type'] ),
-				esc_attr( strtolower( $resource['Resource Type'] ) )
+				esc_html( $resource['Resource Type'] ?? '' ),
+				esc_attr( strtolower( $resource['Resource Type'] ?? '' ) )
 			);
 		}
 		$html .= '</div>';
@@ -82,4 +92,22 @@ function render_callback( array $attributes ) : string {
 	$html .= '</div>';
 
 	return $html;
+}
+
+/**
+ * Translates markdown to HTML using Jetpack parser.
+ *
+ * @param string                    $markdown The markdown from the API.
+ * @param WPCom_GHF_Markdown_Parser $parser   The parser to use.
+ * @return string
+ */
+function markdown_to_html( string $markdown, $parser = null ) : string {
+	$html = '';
+	if ( $parser ) {
+		$html = $parser->transform( $markdown );
+	} else {
+		$html = $markdown;
+	}
+
+	return wpautop( wptexturize( $html ) );
 }
