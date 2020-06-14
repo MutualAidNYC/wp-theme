@@ -59,7 +59,11 @@ function render_callback( array $attributes ) : string {
 
 	foreach ( $needs as $need ) {
 		$html .= '<details class="resources__need">';
-		$html .= sprintf( '<summary class="resources__need-title">%s</summary>', esc_html( $need['Need'] ) );
+		$html .= sprintf( '<summary class="resources__need-title" id="%s">
+				%s
+			</summary>', 
+			urlencode( strtolower($need['Need']) ),	
+			$need['Need']);
 		$html .= '<div class="resources__item-wrapper">';
 		foreach ( $need['Resources'] as $resource ) {
 			$html .= sprintf(
