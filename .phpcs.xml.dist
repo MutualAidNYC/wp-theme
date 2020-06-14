@@ -41,6 +41,5 @@
 	<exclude-pattern>/node_modules/*</exclude-pattern>
 	<exclude-pattern>/vendor/*</exclude-pattern>
 	<exclude-pattern>/assets/blocks/*</exclude-pattern>
-	<exclude-pattern>/twentytwenty/*</exclude-pattern>
-	<exclude-pattern>/airpress/*</exclude-pattern>
+	<exclude-pattern>/stubs/*</exclude-pattern>
 </ruleset>
