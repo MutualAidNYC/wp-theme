@@ -18,7 +18,7 @@
         "sirbrillig/phpcs-variable-analysis": "^2.8"
 	},
 	"scripts": {
-		"php:lint": "vendor/bin/phpcs -p -s functions.php",
+		"php:lint": "vendor/bin/phpcs -p -s *.php blocks template-parts",
 		"php:changed": "vendor/sirbrillig/phpcs-changed/bin/phpcs-changed --git"
 	}
 }
