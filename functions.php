@@ -37,6 +37,7 @@ function setup() : void {
 	add_filter( 'get_custom_logo', __NAMESPACE__ . '\\filter_logo' );
 	add_action( 'customize_controls_enqueue_scripts', __NAMESPACE__ . '\\remove_customizer_scripts', 11 );
 	add_action( 'customize_register', __NAMESPACE__ . '\\register_customizer', 11 );
+	add_filter( 'theme_page_templates', __NAMESPACE__ . '\\filter_page_templates' );
 	add_filter( 'body_class', __NAMESPACE__ . '\\filter_body_class' );
 
 	add_filter( 'trp_skip_gettext_processing', __NAMESPACE__ . '\\skip_jetpack_translation', 10, 4 );
@@ -236,6 +237,19 @@ function filter_logo( string $html ) : string {
 	// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 	$svg_markup = file_get_contents( __DIR__ . '/assets/logo.svg' );
 	return str_replace( '></', ">$svg_markup</", $html );
+}
+
+/**
+ * Filters page templates to remove cover type.
+ *
+ * @param array $page_templates Array of page templates.
+ * @return array
+ */
+function filter_page_templates( array $page_templates ) : array {
+	if ( isset( $page_templates['templates/template-cover.php'] ) ) {
+		unset( $page_templates['templates/template-cover.php'] );
+	}
+	return $page_templates;
 }
 
 /**
