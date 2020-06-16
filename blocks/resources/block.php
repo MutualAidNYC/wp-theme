@@ -68,9 +68,15 @@ function render_callback( array $attributes ) : string {
 		if ( count( $need['Resources'] ) === 0 ) {
 			continue;
 		}
-		$html .= '<details class="resources__need">';
-		$html .= sprintf( '<summary class="resources__need-title">%s</summary>', esc_html( $need['Need'] ) );
-		$html .= '<div class="resources__item-wrapper">';
+		$anchor = preg_replace( '/[^a-z0-9]+/', '+', strtolower( $need['Need'] ) );
+		$anchor = trim( $anchor, '+' );
+		$html  .= '<details class="resources__need">';
+		$html  .= sprintf(
+			'<summary class="resources__need-title" id="%1$s">%2$s</summary>',
+			esc_attr( $anchor ),
+			esc_html( $need['Need'] )
+		);
+		$html  .= '<div class="resources__item-wrapper">';
 		foreach ( $need['Resources'] as $resource ) {
 			$html .= sprintf(
 				'<div class="resources__item">
