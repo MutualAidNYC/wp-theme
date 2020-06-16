@@ -65,7 +65,7 @@ function render_callback( array $attributes ) : string {
 	}
 
 	foreach ( $needs as $need ) {
-    if ( count( $need['Resources'] ) === 0 ) {
+		if ( count( $need['Resources'] ) === 0 ) {
 			continue;
 		}
 		$anchor = preg_replace( '/[^a-z0-9]+/', '+', strtolower( $need['Need'] ) );
