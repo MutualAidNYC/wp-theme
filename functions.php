@@ -38,7 +38,7 @@ function setup() : void {
 	add_action( 'customize_controls_enqueue_scripts', __NAMESPACE__ . '\\remove_customizer_scripts', 11 );
 	add_action( 'customize_register', __NAMESPACE__ . '\\register_customizer', 11 );
 	add_filter( 'theme_page_templates', __NAMESPACE__ . '\\filter_page_templates' );
-	add_filter( 'body_class', __NAMESPACE__ . '\\filter_body_class' );
+	add_filter( 'body_class', __NAMESPACE__ . '\\filter_body_class', 11 );
 
 	add_filter( 'trp_skip_gettext_processing', __NAMESPACE__ . '\\skip_jetpack_translation', 10, 4 );
 
@@ -277,6 +277,10 @@ function filter_body_class( array $classes ) : array {
 		( ! is_page_template() || is_page_template( 'templates/template-sidebar.php' ) )
 	) {
 		$classes[] = 'overlay-header';
+	}
+	$key = array_search( 'reduced-spacing', $classes, true );
+	if ( false !== $key ) {
+		unset( $classes[ $key ] );
 	}
 	return $classes;
 }
