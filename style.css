@@ -363,13 +363,13 @@ body {
 
 @media ( min-width: 1200px ) {
 	.template-sidebar .entry-content {
-		margin-left: -300px;
+		margin-right: 300px;
 	}
 }
 
 @media ( min-width: 1800px ) {
 	.template-sidebar .entry-content {
-		margin-left: calc( -4vw + -300px );
+		margin-right: calc( 4vw + 300px );
 	}
 	.template-sidebar .page-sidebar {
 		margin-left: 4vw;
