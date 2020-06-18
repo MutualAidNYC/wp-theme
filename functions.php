@@ -92,6 +92,19 @@ function setup() : void {
 		)
 	);
 
+	// Adds sidebar support.
+	register_sidebar(
+		[
+			'name'          => __( 'Page Sidebar', 'mutualaidnyc' ),
+			'id'            => 'page-sidebar',
+			'description'   => __( 'Sidebar that appears only when the Sidebar page template is selected.', 'mutualaidnyc' ),
+			'before_title'  => '<h2 class="widget-title subheading">',
+			'after_title'   => '</h2>',
+			'before_widget' => '<div class="widget %2$s"><div class="widget-content">',
+			'after_widget'  => '</div></div>',
+		]
+	);
+
 	// Disables custom font sizes and colors.
 	add_theme_support( 'disable-custom-font-sizes' );
 	add_theme_support( 'disable-custom-colors' );
