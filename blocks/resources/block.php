@@ -53,6 +53,8 @@ function render_callback( array $attributes ) : string {
 	$needs = new AirpressCollection( $needs_query );
 	$needs->populateRelatedField( 'Resources', $resources_query );
 
+	$needs->populateRelatedField( 'Resources|Group', 'Groups' );
+	
 	$html = sprintf(
 		'<div class="wp-block-resources %s">',
 		esc_attr( $attributes['className'] ?? '' )
@@ -82,6 +84,7 @@ function render_callback( array $attributes ) : string {
 				'<div class="resources__item">
 					<span class="resources__tag resources__tag--%5$s">%4$s</span>
 					<p class="resources__item-title">%1$s</p>
+					<p class="resources__item-group">Group: %6$s</p>
 					%2$s
 					<p><a href="%3$s" class="resources__item-link">%3$s</a></p>
 				</div>',
@@ -89,7 +92,8 @@ function render_callback( array $attributes ) : string {
 				wp_kses_post( markdown_to_html( $resource['Resource Details'], $markdown_parser ) ),
 				esc_url( $resource['Link to Resource'] ?? '' ),
 				esc_html( $resource['Resource Type'] ?? '' ),
-				esc_attr( strtolower( $resource['Resource Type'] ?? '' ) )
+				esc_attr( strtolower( $resource['Resource Type'] ?? '' ) ),
+				esc_html( $resource['Group'][0]['Group Name'] ?? '' )
 			);
 		}
 		$html .= '</div>';

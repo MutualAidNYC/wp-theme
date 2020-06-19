@@ -69,3 +69,9 @@ p.resources__item-title {
 	font-weight: bold;
 	margin: 1rem 0;
 }
+p.resources__item-group {
+	font-size: 1.0em;
+	font-family: var( --font-header );
+	font-weight: bold;
+	margin: 1rem 0;
+}
