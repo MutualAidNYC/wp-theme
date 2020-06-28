@@ -50,11 +50,14 @@ function render_callback( array $attributes ) : string {
 	$resources_query = new AirpressQuery( 'Resources', 0 );
 	$resources_query->addFilter( '{Publish Status of Resource} = "Published"' );
 
+	$groups_query = new AirpressQuery( 'Groups', 0 );
+	$groups_query->addFilter( 'NOT({Name} = "-No Associated Group" )' );
+
 	$needs = new AirpressCollection( $needs_query );
 	$needs->populateRelatedField( 'Resources', $resources_query );
 
-	$needs->populateRelatedField( 'Resources|Group', 'Groups' );
-	
+	$needs->populateRelatedField( 'Resources|Group', $groups_query );
+
 	$html = sprintf(
 		'<div class="wp-block-resources %s">',
 		esc_attr( $attributes['className'] ?? '' )
