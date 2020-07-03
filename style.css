@@ -130,7 +130,7 @@ body {
 --------------------------------------------------------------*/
 
 .site-logo svg {
-	width: 100px;
+	height: 130px;
 }
 
 .site-description {
@@ -171,6 +171,20 @@ body {
 	justify-content: center;
 	min-height: 400px;
 	max-height: 100vh;
+}
+	
+.header-inner {
+	padding: 0 4rem 0 0;
+	width: initial;
+}
+
+.header-inner .section-inner {
+	padding: 0;
+}
+
+.home .cover-header .cover-header-inner-wrapper {
+	min-height: 130px;
+	height: 130px;
 }
 
 .admin-bar .cover-header-inner-wrapper {
