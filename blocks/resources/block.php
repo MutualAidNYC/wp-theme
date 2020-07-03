@@ -81,7 +81,7 @@ function render_callback( array $attributes ) : string {
 			$html .= sprintf(
 				'<div class="resources__item">
 					<span class="resources__tag resources__tag--%5$s">%4$s</span>
-					<p class="resources__item-title">%1$s</p>
+					<h3 class="resources__item-title">%1$s</h3>
 					%2$s
 					<p><a href="%3$s" class="resources__item-link">%3$s</a></p>
 				</div>',
