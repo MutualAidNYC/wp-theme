@@ -20,12 +20,10 @@ jobs:
         id: milestone-data
         with:
           script: |
-            github.issues.listMilestones({
+            console.log(github.issues.listMilestones({
               owner: context.repo.owner,
               repo: context.repo.repo,
-            })
+            }))
 
-      - name: Outputs result
-        run: echo "${{ steps.milestone-data.outputs.result }}"
 
 
