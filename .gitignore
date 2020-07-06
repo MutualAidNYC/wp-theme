@@ -7,3 +7,4 @@ import.xml
 node_modules
 index.js.map
 assets/blocks
+yarn-error.log
