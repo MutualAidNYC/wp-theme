@@ -1,8 +1,7 @@
 import { registerBlockType } from '@wordpress/blocks';
 import ServerSideRender from '@wordpress/server-side-render';
 
-// Commented out due to bug: https://github.com/WordPress/gutenberg/issues/22776
-// import './style.css';
+import './style.css';
 
 const ResourcesEdit = ( { attributes: { className } } ) => {
 	return (
