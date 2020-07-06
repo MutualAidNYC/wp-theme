@@ -38,3 +38,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         args: mutualaidnyc.zip
+
+    - name: Closes the milestone
+      run: ./.github/close-milestone.sh
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
