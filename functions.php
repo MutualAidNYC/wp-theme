@@ -88,6 +88,8 @@ function setup() : void {
 			fonts_url(),
 			'assets/variables.css',
 			'assets/colors.css',
+			'assets/blocks.css',
+			'assets/blocks/style-index.css',
 			'style-editor.css',
 		)
 	);
@@ -136,8 +138,24 @@ function setup() : void {
  */
 function enqueue_block_styles() : void {
 	$theme_version = wp_get_theme()->get( 'Version' );
-	wp_register_style( 'theme-style-variables', get_stylesheet_directory_uri() . '/assets/variables.css', [], $theme_version );
-	wp_register_style( 'theme-style-colors', get_stylesheet_directory_uri() . '/assets/colors.css', [], $theme_version );
+	wp_register_style(
+		'theme-style-variables',
+		MANY_ASSETS_URL . '/variables.css',
+		[],
+		$theme_version
+	);
+	wp_register_style(
+		'theme-style-colors',
+		MANY_ASSETS_URL . '/colors.css',
+		[],
+		$theme_version
+	);
+	wp_register_style(
+		'theme-style-blocks',
+		MANY_ASSETS_URL . '/blocks.css',
+		[ 'theme-style-variables', 'theme-style-colors' ],
+		$theme_version
+	);
 }
 
 /**
@@ -159,7 +177,14 @@ function enqueue_styles() : void {
 	wp_enqueue_style(
 		'theme-style',
 		MANY_ROOT_URL . '/style.css',
-		[ 'parent-style', 'theme-style-variables', 'theme-style-colors', 'theme-blocks-styles', 'dashicons' ],
+		[
+			'parent-style',
+			'theme-style-variables',
+			'theme-style-colors',
+			'theme-style-blocks',
+			'theme-blocks-styles',
+			'dashicons',
+		],
 		$theme_version
 	);
 }
@@ -174,7 +199,7 @@ function enqueue_editor_styles() : void {
 	wp_enqueue_style(
 		'theme-editor-tweaks',
 		MANY_ASSETS_URL . '/editor-tweaks.css',
-		[ 'theme-style-variables', 'theme-blocks-styles' ],
+		[ 'theme-style-variables' ],
 		wp_get_theme()->get( 'Version' )
 	);
 	wp_enqueue_script( 'theme-blocks-editor' );
@@ -218,6 +243,15 @@ if ( function_exists( 'register_block_style' ) ) {
 			'label'        => __( 'Emphasized', 'mutualaidnyc' ),
 			'style_handle' => 'theme-style',
 		)
+	);
+
+	register_block_style(
+		'core/group',
+		[
+			'name'         => 'outline',
+			'label'        => __( 'Outline', 'mutualaidnyc' ),
+			'style_handle' => 'theme-style',
+		]
 	);
 }
 
