@@ -39,6 +39,9 @@ jobs:
       with:
         args: mutualaidnyc.zip
 
+    - name: Get latest milestone data
+      run: ./.github/get-milestone.sh
+
     - name: Closes the milestone
       run: ./.github/close-milestone.sh
       env:

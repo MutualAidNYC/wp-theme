@@ -1,0 +1,26 @@
+name: Bumps the version when a new milestone is created
+
+on:
+  milestone:
+    types: [ created ]
+
+jobs:
+  open:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Get latest milestone data
+        run: ./.github/get-milestone.sh
+
+      - name: Bumps file version
+        run: sed -E -i '' 's/(.+[vV]ersion.+)[0-9]\.[0-9]\.[0-9]+/\1${{ env.MILESTONE_NAME }}/' style.css package.json
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v2
+        with:
+          commit-message: Bumping version to ${{ env.MILESTONE_NAME }}
+          title: Bumps version to ${{ env.MILESTONE_NAME }}
+          milestone: ${{ env.MILESTONE_NUMBER }}
+          branch: version/${{ env.MILESTONE_NAME }}
