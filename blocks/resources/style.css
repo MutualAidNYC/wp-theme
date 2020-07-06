@@ -63,9 +63,12 @@
 .resources__tag--course {
 	background-color: var( --color-accent-text );
 }
-p.resources__item-title {
+.entry-content h3.resources__item-title {
 	font-size: 1.2em;
-	font-family: var( --font-header );
+	font-family: var( --font-body );
+	color: black;
+	line-height: 1.476;
 	font-weight: bold;
+	letter-spacing: normal;
 	margin: 1rem 0;
 }
