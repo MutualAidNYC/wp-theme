@@ -1,0 +1,25 @@
+/**
+ * Style Variants
+ */
+
+/* Group block outline style */
+.wp-block-group.is-style-outline.has-background {
+	background-color: unset;
+	color: inherit;
+	border: var( --border-width ) solid var( --color-primary-text );
+}
+.wp-block-group.is-style-outline.has-accent-background-color {
+	border-color: var( --color-accent-text );
+}
+.wp-block-group.is-style-outline.has-secondary-background-color {
+	border-color: var( --color-secondary-text );
+}
+.wp-block-group.is-style-outline.has-tertiary-background-color {
+	border-color: var( --color-tertiary-text );
+}
+.wp-block-group.is-style-outline.has-highlight-background-color {
+	border-color: var( --color-highlight );
+}
+.wp-block-group.is-style-outline.has-highlight-alt-background-color {
+	border-color: var( --color-highlight-alt-border );
+}
