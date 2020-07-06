@@ -1,0 +1,29 @@
+name: Assigns a milestone to new issues and PRs
+
+on:
+  pull_request:
+    types:
+      - opened
+  issues:
+    types:
+      - opened
+
+jobs:
+  open:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get latest milestone data
+        run: ./.github/get-milestone.sh
+
+      - name: Assign milestone to PR
+        if: ${{ github.event.pulls.id }}
+        run: ./.github/assign-milestone.sh ${{ github.event.pulls.id }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Assign milestone to issue
+        if: ${{ github.event.issue.id }}
+        run: ./.github/assign-milestone.sh ${{ github.event.issue.id }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
