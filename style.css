@@ -21,12 +21,21 @@
 # Typography
 --------------------------------------------------------------*/
 
+body {
+	color: var( --color-primary-text );
+}
+
 body,
+.entry-content,
 .entry-content p,
 .entry-content ol,
 .entry-content ul,
 .entry-content dl,
-.entry-content dt {
+.entry-content dt,
+.entry-content cite,
+.entry-content figcaption,
+.entry-content table,
+.entry-content address {
 	font-family: var( --font-body );
 }
 
@@ -172,7 +181,7 @@ body {
 	min-height: 400px;
 	max-height: 100vh;
 }
-	
+
 .header-inner {
 	padding: 0 4rem 0 0;
 	width: initial;
@@ -495,11 +504,6 @@ input[type='submit'] {
 }
 
 .has-drop-cap:not( :focus )::first-letter,
-.entry-content,
-.entry-content cite,
-.entry-content figcaption,
-.entry-content table,
-.entry-content address,
 .entry-content .wp-caption-text,
 .entry-content .wp-block-file,
 .entry-content .wp-block-archives,
