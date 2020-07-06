@@ -1,4 +1,4 @@
-name: Assigns a milestone to new issues and PRs
+name: Assigns a milestone
 
 on:
   pull_request:
@@ -20,7 +20,7 @@ jobs:
         id: milestone-data
         with:
           script: |
-            console.log(github.issues.listMilestones({
+            console.log(await github.issues.listMilestones({
               owner: context.repo.owner,
               repo: context.repo.repo,
             }))
