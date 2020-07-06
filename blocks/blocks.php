@@ -38,8 +38,7 @@ function block_init() {
 	);
 	wp_register_style(
 		'theme-blocks-styles',
-		// Should be set to common URL once fixed: https://github.com/WordPress/gutenberg/issues/22776.
-		MANY_ROOT_URL . '/blocks/resources/style.css',
+		MANY_ASSETS_URL . '/blocks/style-index.css',
 		[],
 		$script_asset['version']
 	);
