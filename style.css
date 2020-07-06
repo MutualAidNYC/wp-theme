@@ -495,6 +495,7 @@ input[type='submit'] {
 }
 
 .has-drop-cap:not( :focus )::first-letter,
+.entry-content,
 .entry-content cite,
 .entry-content figcaption,
 .entry-content table,
