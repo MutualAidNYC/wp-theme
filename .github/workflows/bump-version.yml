@@ -2,7 +2,9 @@ name: Bumps the version when a new milestone is created
 
 on:
   milestone:
-    types: [ created ]
+    types:
+      - created
+      - opened
 
 jobs:
   open:
