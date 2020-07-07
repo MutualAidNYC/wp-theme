@@ -17,14 +17,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Check perms
-        run: ls -lah ./.github
-
       - name: Get latest milestone data
         run: .github/get-milestone.sh
 
       - name: Assigns milestone
-        if: ${{ github.event.issue.id }}
         run: .github/assign-milestone.sh ${{ github.event.issue.id }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
