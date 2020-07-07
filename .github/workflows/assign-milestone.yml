@@ -9,8 +9,6 @@ on:
     types:
       - opened
       - reopened
-  push:
-    branches: [ add/auto-assign-milestone ]
 
 jobs:
   open:
