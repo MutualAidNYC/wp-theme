@@ -16,11 +16,8 @@ jobs:
       - name: Get latest milestone data
         run: .github/get-milestone.sh
 
-      - name: Gets files in directory
-        run: ls -lah .
-
       - name: Bumps file version
-        run: sed -E -i '' 's/(.+[vV]ersion.+)[0-9]\.[0-9]\.[0-9]+/\1${{ env.MILESTONE_NAME }}/' ./style.css ./package.json
+        run: sed -E -i 's/(.+[vV]ersion.+)[0-9]\.[0-9]\.[0-9]+/\1${{ env.MILESTONE_NAME }}/' ./style.css ./package.json
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v2
