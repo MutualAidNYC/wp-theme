@@ -21,6 +21,12 @@ jobs:
         run: .github/get-milestone.sh
 
       - name: Assigns milestone
-        run: .github/assign-milestone.sh ${{ github.event.issue.id }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/github-script@v2
+        with:
+          script: |
+            await github.issues.update({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              milestone: context.env.MILESTONE_NUMBER
+            })
