@@ -24,7 +24,6 @@ jobs:
         uses: actions/github-script@v2
         with:
           script: |
-            console.log( context );
             await github.issues.update({
               issue_number: context.issue.number,
               owner: context.repo.owner,
