@@ -16,14 +16,10 @@ jobs:
 
     steps:
       - name: Get latest milestone data
-        uses: actions/github-script@v2
-        id: milestone-data
-        with:
-          script: |
-            console.log(await github.issues.listMilestones({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-            }))
+        run: bash .github/get-milestone.sh
 
-
-
+      - name: Assigns milestone
+        if: ${{ github.event.issue.id }}
+        run: bash .github/assign-milestone.sh ${{ github.event.issue.id }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
