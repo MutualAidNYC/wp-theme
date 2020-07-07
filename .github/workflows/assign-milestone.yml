@@ -15,8 +15,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v2
+
       - name: Check perms
-        run: ls -lah .github
+        run: ls -lah ./.github
 
       - name: Get latest milestone data
         run: .github/get-milestone.sh
