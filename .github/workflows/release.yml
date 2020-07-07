@@ -40,9 +40,15 @@ jobs:
         args: mutualaidnyc.zip
 
     - name: Get latest milestone data
-      run: ./.github/get-milestone.sh
+      run: .github/get-milestone.sh
 
-    - name: Closes the milestone
-      run: ./.github/close-milestone.sh
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Closes a milestone
+      uses: actions/github-script@v2
+      with:
+        script: |
+          await github.issues.updateMilestone({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            milestone_number: ${{ env.MILESTONE_NUMBER }},
+            state: 'closed',
+          })

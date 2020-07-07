@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Get latest milestone data
-        run: ./.github/get-milestone.sh
+        run: .github/get-milestone.sh
 
       - name: Bumps file version
         run: sed -E -i '' 's/(.+[vV]ersion.+)[0-9]\.[0-9]\.[0-9]+/\1${{ env.MILESTONE_NAME }}/' style.css package.json

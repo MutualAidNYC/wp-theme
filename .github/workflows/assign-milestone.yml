@@ -1,0 +1,32 @@
+name: Assigns a milestone
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+  issues:
+    types:
+      - opened
+      - reopened
+
+jobs:
+  open:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Get latest milestone data
+        run: .github/get-milestone.sh
+
+      - name: Assigns milestone
+        uses: actions/github-script@v2
+        with:
+          script: |
+            await github.issues.update({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              milestone: ${{ env.MILESTONE_NUMBER }},
+            })
