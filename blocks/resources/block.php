@@ -51,13 +51,13 @@ function render_callback( array $attributes ) : string {
 	$resources_query = new AirpressQuery( 'Resources', 0 );
 	$resources_query->addFilter( '{Publish Status of Resource} = "Published"' );
 
-	$trp = TRP_Translate_Press::get_trp_instance();
+	$trp           = TRP_Translate_Press::get_trp_instance();
 	$url_converter = $trp->get_component( 'url_converter' );
 	$language_code = $url_converter->get_lang_from_url_string();
 
 	if ( $language_code ) {
 		$language_handler = $trp->get_component( 'languages' );
-		$language_name = $language_handler->get_language_names( array( $language_code ), 'english_name' )[ $language_code ];
+		$language_name    = $language_handler->get_language_names( array( $language_code ), 'english_name' )[ $language_code ];
 		$resources_query->view( 'Published (' . $language_name . ') Resources grouped by Resource Type - site embed view' );
 	} else {
 		$resources_query->sort( 'Display First', 'desc' );
