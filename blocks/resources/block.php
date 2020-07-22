@@ -58,7 +58,7 @@ function render_callback( array $attributes ) : string {
 	if ($language_code) {
 		$language_handler = $trp->get_component('languages');
 		$language_name = $language_handler->get_language_names(array($language_code), 'english_name')[$language_code];
-		$resources_query->view("Language ".$language_name." site view");
+		$resources_query->view("Published (".$language_name.") Resources grouped by Resource Type - site embed view");
 	} else {
 		$resources_query->sort( 'Display First', 'desc' );
 	}
@@ -83,7 +83,7 @@ function render_callback( array $attributes ) : string {
 		if ($language_code) {
 			$need_name = $need[$language_name.' Translation'];
 		} else {
-		       $need_name = $need['Need'];
+			$need_name = $need['Need'];
 		}
 		$anchor = preg_replace( '/[^a-z0-9]+/', '+', strtolower($need_name));
 		$anchor = trim( $anchor, '+' );
