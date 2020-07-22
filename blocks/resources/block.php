@@ -49,6 +49,7 @@ function render_callback( array $attributes ) : string {
 
 	$resources_query = new AirpressQuery( 'Resources', 0 );
 	$resources_query->addFilter( '{Publish Status of Resource} = "Published"' );
+	$resources_query->sort( 'Display First', 'desc' );
 
 	$needs = new AirpressCollection( $needs_query );
 	$needs->populateRelatedField( 'Resources', $resources_query );
