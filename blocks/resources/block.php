@@ -56,9 +56,9 @@ function render_callback( array $attributes ) : string {
 	$language_code = $url_converter->get_lang_from_url_string();
 
 	if ($language_code) {
-		$language_handler = $trp->get_component('languages');
-		$language_name = $language_handler->get_language_names(array($language_code), 'english_name')[$language_code];
-		$resources_query->view("Published (".$language_name.") Resources grouped by Resource Type - site embed view");
+		$language_handler = $trp->get_component( 'languages' );
+		$language_name = $language_handler->get_language_names( array( $language_code ), 'english_name' )[$language_code];
+		$resources_query->view( 'Published (' . $language_name . ') Resources grouped by Resource Type - site embed view' );
 	} else {
 		$resources_query->sort( 'Display First', 'desc' );
 	}
@@ -81,11 +81,11 @@ function render_callback( array $attributes ) : string {
 			continue;
 		}
 		if ($language_code) {
-			$need_name = $need[$language_name.' Translation'];
+			$need_name = $need[ $language_name . ' Translation' ];
 		} else {
-			$need_name = $need['Need'];
+			$need_name = $need[ 'Need' ];
 		}
-		$anchor = preg_replace( '/[^a-z0-9]+/', '+', strtolower($need_name));
+		$anchor = preg_replace( '/[^a-z0-9]+/', '+', strtolower( $need_name ) );
 		$anchor = trim( $anchor, '+' );
 		$html  .= '<details class="resources__need">';
 		$html  .= sprintf(
