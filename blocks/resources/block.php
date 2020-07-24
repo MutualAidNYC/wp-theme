@@ -62,11 +62,11 @@ function render_callback( array $attributes ) : string {
 
 		$sort = array(
 			array(
-				'field' => $language_name . ' Display Ranking',
+				'field'     => $language_name . ' Display Ranking',
 				'direction' => 'desc',
 			),
 			array(
-				'field' => 'Display First',
+				'field'     => 'Display First',
 				'direction' => 'desc',
 			),
 		);
