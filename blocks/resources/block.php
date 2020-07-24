@@ -51,7 +51,7 @@ function render_callback( array $attributes ) : string {
 	$resources_query = new AirpressQuery( 'Resources', 0 );
 	$resources_query->addFilter( '{Publish Status of Resource} = "Published"' );
 
-	if (class_exists('TRP_TRANSLATE_PRESS')) {
+	if ( class_exists( 'TRP_TRANSLATE_PRESS' ) ) {
 		$trp           = TRP_Translate_Press::get_trp_instance();
 		$url_converter = $trp->get_component( 'url_converter' );
 		$language_code = $url_converter->get_lang_from_url_string();
@@ -61,9 +61,15 @@ function render_callback( array $attributes ) : string {
 		$language_name    = $language_handler->get_language_names( array( $language_code ), 'english_name' )[ $language_code ];
 
 		$sort = array(
-		    array( 'field' => $language_name . ' Display Ranking', 'direction' => 'desc' ),
-		    array( 'field' => 'Display First', 'direction' => 'desc' )
-		    );
+			array(
+				'field' => $language_name . ' Display Ranking',
+				'direction' => 'desc',
+			),
+			array(
+				'field' => 'Display First',
+				'direction' => 'desc',
+			),
+		);
 		$resources_query->sort( $sort );
 	} else {
 		$resources_query->sort( 'Display First', 'desc' );
