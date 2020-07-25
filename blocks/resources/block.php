@@ -56,7 +56,7 @@ function render_callback( array $attributes ) : string {
 		$url_converter = $trp->get_component( 'url_converter' );
 		$language_code = $url_converter->get_lang_from_url_string();
 	}
-	if ( $language_code ) {
+	if ( isset( $language_code ) ) {
 		$language_handler = $trp->get_component( 'languages' );
 		$language_name    = $language_handler->get_language_names( array( $language_code ), 'english_name' )[ $language_code ];
 
