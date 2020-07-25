@@ -11,6 +11,7 @@ use const MutualAidNYC\Blocks\ADD_BLOCK_HOOK;
 use AirpressQuery;
 use AirpressCollection;
 use WPCom_GHF_Markdown_Parser;
+use TRP_Translate_Press;
 
 add_action( ADD_BLOCK_HOOK, __NAMESPACE__ . '\\block_init' );
 
@@ -51,6 +52,29 @@ function render_callback( array $attributes ) : string {
 	$resources_query->addFilter( '{Publish Status of Resource} = "Published"' );
 	$resources_query->sort( 'Display First', 'desc' );
 
+	if ( class_exists( 'TRP_TRANSLATE_PRESS' ) ) {
+		$trp           = TRP_Translate_Press::get_trp_instance();
+		$url_converter = $trp->get_component( 'url_converter' );
+		$language_code = $url_converter->get_lang_from_url_string();
+	}
+	if ( isset( $language_code ) ) {
+		$language_handler = $trp->get_component( 'languages' );
+		$language_name    = $language_handler->get_language_names( array( $language_code ), 'english_name' )[ $language_code ];
+
+		$sort = array(
+			array(
+				'field'     => $language_name . ' Display Ranking',
+				'direction' => 'desc',
+			),
+			array(
+				'field'     => 'Display First',
+				'direction' => 'desc',
+			),
+		);
+		$resources_query->sort( $sort );
+	} else {
+		$resources_query->sort( 'Display First', 'desc' );
+	}
 	$needs = new AirpressCollection( $needs_query );
 	$needs->populateRelatedField( 'Resources', $resources_query );
 
@@ -69,13 +93,18 @@ function render_callback( array $attributes ) : string {
 		if ( count( $need['Resources'] ) === 0 ) {
 			continue;
 		}
-		$anchor = preg_replace( '/[^a-z0-9]+/', '+', strtolower( $need['Need'] ) );
+		if ( $language_code ) {
+			$need_name = $need[ $language_name . ' Translation' ];
+		} else {
+			$need_name = $need['Need'];
+		}
+		$anchor = preg_replace( '/[^a-z0-9]+/', '+', strtolower( $need_name ) );
 		$anchor = trim( $anchor, '+' );
 		$html  .= '<details class="resources__need">';
 		$html  .= sprintf(
 			'<summary class="resources__need-title" id="%1$s">%2$s</summary>',
 			esc_attr( $anchor ),
-			esc_html( $need['Need'] )
+			esc_html( $need_name )
 		);
 		$html  .= '<div class="resources__item-wrapper">';
 		foreach ( $need['Resources'] as $resource ) {
