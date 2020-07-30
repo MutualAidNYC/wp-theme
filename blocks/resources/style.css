@@ -35,8 +35,12 @@
 .resources__need[open] > summary::after {
 	content: '\f142';
 }
+.resources__item-wrapper {
+	margin: 0;
+}
 .resources__item {
 	margin: 4rem 10px;
+	list-style: none;
 }
 .resources__item > *:not( .resources__tag ) {
 	user-select: text;
@@ -49,6 +53,7 @@
 	padding: 0.5rem 1rem;
 	background-color: var( --color-primary-text );
 	text-transform: uppercase;
+	margin-bottom: 2rem;
 }
 .resources__tag--service {
 	background-color: var( --color-tertiary-text );
@@ -63,12 +68,21 @@
 .resources__tag--course {
 	background-color: var( --color-accent-text );
 }
+
 .entry-content h3.resources__item-title {
+	margin: 0 0 2rem;
+}
+
+.entry-content h3.resources__item-title a {
+	text-decoration: underline !important;
 	font-size: 1.2em;
 	font-family: var( --font-body );
 	color: black;
 	line-height: 1.476;
-	font-weight: bold;
 	letter-spacing: normal;
-	margin: 1rem 0;
+}
+
+.resources__item-group {
+	color: var( --color-accent-text );
+	margin-bottom: 2rem;
 }
