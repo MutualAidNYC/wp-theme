@@ -82,7 +82,7 @@ function render_callback( array $attributes ) : string {
 	$needs = new AirpressCollection( $needs_query );
 	$needs->populateRelatedField( 'Resources', $resources_query );
 
-	$needs->populateRelatedField( 'Resources|Group', $groups_query);
+	$needs->populateRelatedField( 'Resources|Group', $groups_query );
 
 	$html = sprintf(
 		'<div class="wp-block-resources %s">',
@@ -114,29 +114,29 @@ function render_callback( array $attributes ) : string {
 		);
 		$html  .= '<ul class="resources__item-wrapper">';
 
-		foreach ( $need['Resources'] as $resource ) { 
-			$html .=  '<li class="resources__item">';
+		foreach ( $need['Resources'] as $resource ) {
+			$html .= '<li class="resources__item">';
 
 			$html .= sprintf(
 				'<h3 class="resources__item-title"><a href="%s">%s</a></h3>',
 				esc_url( $resource['Link to Resource'] ?? '' ),
 				esc_html( $resource['Resource Title'] ),
 			);
-			
-			if (sizeof($resource['Group'])) {
+
+			if ( count( $resource['Group'] ) ) {
 				$group_names = [];
 
-				foreach ($resource['Group'] as $group) {
-					if (isset($group['Website'])) {
-						array_push($group_names, sprintf('<a href="%s">%s</a>', esc_url($group['Website']), esc_html($group['Group Name'])));
+				foreach ( $resource['Group'] as $group ) {
+					if ( isset( $group['Website'] ) ) {
+						array_push( $group_names, sprintf( '<a href="%s">%s</a>', esc_url( $group['Website'] ), esc_html( $group['Group Name'] ) ) );
 					} else {
-						array_push($group_names, $group['Group Name']);
+						array_push( $group_names, $group['Group Name'] );
 					}
 				}
 
 				$html .= sprintf(
 					'<p class="resources__item-group">Provided by %s</p>',
-					implode(', ', $group_names)
+					implode( ', ', $group_names )
 				);
 			}
 
@@ -163,7 +163,7 @@ function render_callback( array $attributes ) : string {
  *
  * @param string                    $markdown The markdown from the API.
  * @param WPCom_GHF_Markdown_Parser $parser   The parser to use.
- * @return string	
+ * @return string
  */
 function markdown_to_html( string $markdown, $parser = null ) : string {
 	$html = '';
