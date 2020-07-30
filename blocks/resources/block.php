@@ -75,7 +75,7 @@ function render_callback( array $attributes ) : string {
 	} else {
 		$resources_query->sort( 'Display First', 'desc' );
 	}
-	
+
 	$groups_query = new AirpressQuery( 'Groups', 0 );
 	$groups_query->addFilter( 'NOT({Group Name} = "-No Associated Group" )' );
 
@@ -99,7 +99,7 @@ function render_callback( array $attributes ) : string {
 		if ( count( $need['Resources'] ) === 0 ) {
 			continue;
 		}
-		if ( $language_code ) {
+		if ( isset( $language_code ) ) {
 			$need_name = $need[ $language_name . ' Translation' ];
 		} else {
 			$need_name = $need['Need'];
