@@ -135,7 +135,7 @@ function render_callback( array $attributes ) : string {
 				}
 
 				$html .= sprintf(
-					'<p class="resources__item-group">Provided by %s</p>',
+					'<p class="resources__item-group">' . esc_html__( 'Provided by %s' ) . '</p>',
 					implode( ', ', $group_names )
 				);
 			}
