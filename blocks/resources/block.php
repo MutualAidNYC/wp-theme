@@ -135,8 +135,9 @@ function render_callback( array $attributes ) : string {
 				}
 
 				$html .= sprintf(
+					// translators: %s is a comma separated list of group names.
 					'<p class="resources__item-group">' . esc_html__( 'Provided by %s', 'mutualaidnyc' ) . '</p>',
-					implode( ', ', $group_names )
+					implode( _x( ', ', 'Separator between group names.', 'mutualaidnyc' ), $group_names )
 				);
 			}
 
