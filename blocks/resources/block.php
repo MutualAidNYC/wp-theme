@@ -75,8 +75,14 @@ function render_callback( array $attributes ) : string {
 	} else {
 		$resources_query->sort( 'Display First', 'desc' );
 	}
+
+	$groups_query = new AirpressQuery( 'Groups', 0 );
+	$groups_query->addFilter( 'NOT({Group Name} = "-No Associated Group" )' );
+
 	$needs = new AirpressCollection( $needs_query );
 	$needs->populateRelatedField( 'Resources', $resources_query );
+
+	$needs->populateRelatedField( 'Resources|Group', $groups_query );
 
 	$html = sprintf(
 		'<div class="wp-block-resources %s">',
@@ -93,7 +99,7 @@ function render_callback( array $attributes ) : string {
 		if ( count( $need['Resources'] ) === 0 ) {
 			continue;
 		}
-		if ( $language_code ) {
+		if ( isset( $language_code ) ) {
 			$need_name = $need[ $language_name . ' Translation' ];
 		} else {
 			$need_name = $need['Need'];
@@ -106,23 +112,46 @@ function render_callback( array $attributes ) : string {
 			esc_attr( $anchor ),
 			esc_html( $need_name )
 		);
-		$html  .= '<div class="resources__item-wrapper">';
+		$html  .= '<ul class="resources__item-wrapper">';
+
 		foreach ( $need['Resources'] as $resource ) {
+			$html .= '<li class="resources__item">';
+
 			$html .= sprintf(
-				'<div class="resources__item">
-					<span class="resources__tag resources__tag--%5$s">%4$s</span>
-					<h3 class="resources__item-title">%1$s</h3>
-					%2$s
-					<p><a href="%3$s" class="resources__item-link">%3$s</a></p>
-				</div>',
-				esc_html( $resource['Resource Title'] ),
-				wp_kses_post( markdown_to_html( $resource['Resource Details'], $markdown_parser ) ),
+				'<h3 class="resources__item-title"><a href="%s">%s</a></h3>',
 				esc_url( $resource['Link to Resource'] ?? '' ),
-				esc_html( $resource['Resource Type'] ?? '' ),
-				esc_attr( strtolower( $resource['Resource Type'] ?? '' ) )
+				esc_html( $resource['Resource Title'] ),
 			);
+
+			if ( count( $resource['Group'] ) ) {
+				$group_names = [];
+
+				foreach ( $resource['Group'] as $group ) {
+					if ( isset( $group['Website'] ) ) {
+						array_push( $group_names, sprintf( '<a href="%s">%s</a>', esc_url( $group['Website'] ), esc_html( $group['Group Name'] ) ) );
+					} else {
+						array_push( $group_names, $group['Group Name'] );
+					}
+				}
+
+				$html .= sprintf(
+					// translators: %s is a comma separated list of group names.
+					'<p class="resources__item-group">' . esc_html__( 'Provided by %s', 'mutualaidnyc' ) . '</p>',
+					implode( _x( ', ', 'Separator between group names.', 'mutualaidnyc' ), $group_names )
+				);
+			}
+
+			$html .= sprintf(
+				'<span class="resources__tag resources__tag--%s">%s</span>',
+				esc_attr( strtolower( $resource['Resource Type'] ?? '' ) ),
+				esc_html( $resource['Resource Type'] ?? '' ),
+			);
+
+			$html .= wp_kses_post( markdown_to_html( $resource['Resource Details'], $markdown_parser ) );
+
+			$html .= '<hr /></li>';
 		}
-		$html .= '</div>';
+		$html .= '</ul>';
 		$html .= '</details>';
 	}
 	$html .= '</div>';
