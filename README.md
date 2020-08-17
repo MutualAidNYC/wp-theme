@@ -16,7 +16,7 @@ To install this project:
 3. Initialize the site with `yarn wp-env start`.
 4. Access the site at `localhost:8888`. [The default user is `admin`, password `password`](https://developer.wordpress.org/block-editor/packages/packages-env/#starting-the-environment).
 5. Install the following plugins: AirPress, Jetpack, Gutenberg, TranslatePress (optional).
-6. Build the blocks via the following command: `yarn 
+6. Build the blocks via the following command: `yarn build`.
 7. Activate the Mutual Aid NYC theme in the admin.
 8. Optional: Export the site from production or stage, and import via the WordPress importer tool.
 9. Optional: Run `composer install` from repo root to install PHP linting tools. Linting can be run via `composer run-script php:lint`.
