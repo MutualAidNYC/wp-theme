@@ -23,3 +23,16 @@
 .wp-block-group.is-style-outline.has-highlight-alt-background-color {
 	border-color: var( --color-highlight-alt-border );
 }
+body.home .wp-block-group {
+	padding: 4rem 6rem !important;
+}
+body.home .wp-block-group h2 {
+	margin-bottom: 0;
+}
+body.home .wp-block-group p {
+	margin-bottom: 0;
+}
+body.home .wp-block-group div.wp-block-buttons {
+	margin-top: 0;
+	margin-bottom: 0;
+}
