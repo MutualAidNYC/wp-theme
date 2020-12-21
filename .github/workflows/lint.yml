@@ -27,7 +27,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Installs dependencies
+      - name: Installs system dependencies
+        run: sudo apt-get -y install libkrb5-dev
+
+      - name: Installs npm dependencies
         run: yarn install --frozen-lockfile --non-interactive
 
       - name: Validates CSS

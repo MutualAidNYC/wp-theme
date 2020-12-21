@@ -176,12 +176,6 @@ body {
 	background-color: var( --color-secondary-text );
 }
 
-.cover-header .cover-header-inner-wrapper {
-	justify-content: center;
-	min-height: 400px;
-	max-height: 100vh;
-}
-
 .header-inner {
 	padding: 0 4rem 0 0;
 	width: initial;
@@ -191,7 +185,7 @@ body {
 	padding: 0;
 }
 
-.home .cover-header .cover-header-inner-wrapper {
+.cover-header .cover-header-inner-wrapper {
 	min-height: 130px;
 	height: 130px;
 }
@@ -211,12 +205,10 @@ body {
 	border: 0;
 }
 
-.cover-header-inner {
-	padding: 15rem 0;
-}
-
-.cover-header .entry-header .entry-title {
+.post-inner .entry-title {
+	text-align: center;
 	font-size: 2em;
+	padding-bottom: 5rem;
 }
 
 .to-the-content-wrapper {

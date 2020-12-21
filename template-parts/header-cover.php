@@ -74,44 +74,6 @@ $color_overlay_classes .= ' opacity-' . $color_overlay_opacity;
 								<?php
 							}
 
-							the_title( '<h1 class="entry-title">', '</h1>' );
-
-							if ( is_page() ) {
-								?>
-
-								<div class="to-the-content-wrapper">
-
-									<a href="#post-inner" class="to-the-content fill-children-current-color">
-										<?php twentytwenty_the_theme_svg( 'arrow-down' ); ?>
-										<div class="screen-reader-text"><?php esc_html_e( 'Scroll Down', 'mutualaidnyc' ); ?></div>
-									</a><!-- .to-the-content -->
-
-								</div><!-- .to-the-content-wrapper -->
-
-								<?php
-							} else {
-
-								$intro_text_width = '';
-
-								if ( is_singular() ) {
-									$intro_text_width = ' small';
-								} else {
-									$intro_text_width = ' thin';
-								}
-
-								if ( has_excerpt() ) {
-									?>
-
-									<div class="intro-text section-inner max-percentage<?php echo esc_attr( $intro_text_width ); ?>">
-										<?php the_excerpt(); ?>
-									</div>
-
-									<?php
-								}
-
-								twentytwenty_the_post_meta( get_the_ID(), 'single-top' );
-
-							}
 							?>
 
 						</div><!-- .entry-header-inner -->
